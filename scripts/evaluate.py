@@ -217,6 +217,29 @@ def accuracy_line(counts: Counter) -> str:
     )
 
 
+GROUPS = {
+    "Dimensions": {"overall_width_mm", "overall_height_mm", "width_mm", "height_mm"},
+    "Holes": {"hole_count", "hole_diameters", "hole_positions"},
+    "Other fields": {"qty", "thickness_mm", "glass_type", "edge_work", "notches", "panel"},
+}
+
+
+def group_lines(scores: list[FieldScore]) -> list[str]:
+    lines = []
+    for group, fields in GROUPS.items():
+        counts = summary([score for score in scores if score.field in fields])
+        total = sum(counts.values())
+        if not total:
+            continue
+        right = counts[CORRECT] + counts[CHECKED_RIGHT]
+        lines.append(
+            f"- {group}: {right}/{total} right ({100 * right / total:.0f}%), "
+            f"{counts[CHECKED_RIGHT]} false CHECK, {counts[FLAGGED_WRONG]} flagged and wrong/missing, "
+            f"{counts[WRONG_UNFLAGGED]} wrong and not flagged"
+        )
+    return lines
+
+
 def fmt(value: Any) -> str:
     if isinstance(value, float) and value.is_integer():
         return str(int(value))
@@ -225,6 +248,7 @@ def fmt(value: Any) -> str:
 
 def report(folder: Path, scores: list[FieldScore], truth: dict, result: dict) -> str:
     lines = [f"## {folder.name} ({truth.get('drawing_id', '')})", "", accuracy_line(summary(scores)), ""]
+    lines += group_lines(scores) + [""]
     usage = result.get("usage", {})
     lines.append(
         f"Model `{usage.get('model')}`, {usage.get('input_tokens')} input / {usage.get('output_tokens')} output tokens. "
@@ -254,21 +278,31 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     folders = args.folders or sorted(path for path in DEFAULT_DRAWINGS_DIR.iterdir() if path.is_dir())
 
-    sections, totals = [], Counter()
+    sections, all_scores = [], []
     for folder in folders:
         evaluated = evaluate_folder(folder)
         if evaluated is None:
             print(f"Skipping {folder}: needs ground-truth-*.json and {RESULT_PATH}", file=sys.stderr)
             continue
         scores, truth, result = evaluated
-        totals += summary(scores)
+        all_scores += scores
         sections.append(report(folder, scores, truth, result))
 
     if not sections:
         print("Nothing to evaluate.", file=sys.stderr)
         return 1
 
-    text = "# Accuracy against ground truth\n\n" + f"**All drawings:** {accuracy_line(totals)}\n\n" + "\n".join(sections)
+    header = [
+        "# Accuracy against ground truth",
+        "",
+        f"**All drawings:** {accuracy_line(summary(all_scores))}",
+        "",
+        *group_lines(all_scores),
+        "",
+        "A false CHECK is a value the system read correctly but still asked a person to confirm.",
+        "",
+    ]
+    text = "\n".join(header) + "\n" + "\n".join(sections)
     (DEFAULT_DRAWINGS_DIR / REPORT_NAME).write_text(text, encoding="utf-8")
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     print(text)

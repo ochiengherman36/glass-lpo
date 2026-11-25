@@ -2,9 +2,19 @@
 
 **All drawings:** 76/79 fields right (96%), 73 without a flag; 3 flagged but right; 3 flagged and wrong/missing; **0 wrong and NOT flagged**
 
+- Dimensions: 20/22 right (91%), 1 false CHECK, 2 flagged and wrong/missing, 0 wrong and not flagged
+- Holes: 17/17 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
+- Other fields: 39/40 right (98%), 2 false CHECK, 1 flagged and wrong/missing, 0 wrong and not flagged
+
+A false CHECK is a value the system read correctly but still asked a person to confirm.
+
 ## hard (03-hard)
 
 19/20 fields right (95%), 16 without a flag; 3 flagged but right; 1 flagged and wrong/missing; **0 wrong and NOT flagged**
+
+- Dimensions: 5/6 right (83%), 1 false CHECK, 1 flagged and wrong/missing, 0 wrong and not flagged
+- Holes: 4/4 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
+- Other fields: 10/10 right (100%), 2 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
 
 Model `claude-sonnet-5-5`, 8516 input / 2452 output tokens. LPO `LPO-20261125-145335`.
 
@@ -34,6 +44,10 @@ System flags:
 
 46/47 fields right (98%), 46 without a flag; 0 flagged but right; 1 flagged and wrong/missing; **0 wrong and NOT flagged**
 
+- Dimensions: 11/12 right (92%), 0 false CHECK, 1 flagged and wrong/missing, 0 wrong and not flagged
+- Holes: 10/10 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
+- Other fields: 25/25 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
+
 Model `claude-sonnet-5-5`, 8516 input / 4148 output tokens. LPO `LPO-20261125-145326`.
 
 | Panel | Field | Expected | Got | Flagged | Outcome |
@@ -50,6 +64,10 @@ System flags:
 ## simple (01-simple)
 
 11/12 fields right (92%), 11 without a flag; 0 flagged but right; 1 flagged and wrong/missing; **0 wrong and NOT flagged**
+
+- Dimensions: 4/4 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
+- Holes: 3/3 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
+- Other fields: 4/5 right (80%), 0 false CHECK, 1 flagged and wrong/missing, 0 wrong and not flagged
 
 Model `claude-sonnet-5-5`, 8516 input / 1772 output tokens. LPO `LPO-20261125-145317`.
 
