@@ -1,7 +1,7 @@
 [project]
 name = "backend"
 version = "0.1.0"
-description = "Add your description here"
+description = "Glass drawing photo to checkable LPO: OpenCV enhancement, Claude extraction, validation flags, Excel and PDF output."
 requires-python = ">=3.12"
 dependencies = [
     "anthropic>=2.14.0",
@@ -15,4 +15,16 @@ dependencies = [
     "python-multipart>=0.0.34",
     "reportlab>=5.1.1",
     "uvicorn[standard]>=0.54.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["live: calls the real Claude API (set RUN_LIVE=1)"]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pypdf>=7.1.1",
+    "pytest>=9.2.0",
 ]
