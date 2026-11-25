@@ -24,7 +24,7 @@ Three drawings drawn on paper and photographed with a phone. The answer for each
 On an earlier, messier set of photos the system scored 76/79 with **0 wrong values unflagged**: the 3 misses
 were all unclear handwriting it marked CHECK instead of guessing (commit `f1b190f`).
 
-## Setup (about 10 minutes)
+## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) (installs Python 3.12 for you) and an
 [Anthropic API key](https://console.anthropic.com/). Node is only needed to change the UI: the built page is
