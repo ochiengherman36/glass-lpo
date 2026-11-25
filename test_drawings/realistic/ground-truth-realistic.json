@@ -1,0 +1,112 @@
+{
+  "drawing_id": "02-realistic",
+  "description": "Glass door, overall 2400x2100, 5 panels, one notch, six Ø25 holes. Written before running the system.",
+  "coordinate_convention": "x_mm/y_mm = hole centre measured from each panel's own bottom-left corner",
+  "overall": {
+    "width_mm": 2400,
+    "height_mm": 2100
+  },
+  "panels": [
+    {
+      "panel_id": "P1",
+      "width_mm": 500,
+      "height_mm": 2100,
+      "qty": 1,
+      "thickness_mm": 8,
+      "glass_type": "toughened",
+      "holes": [
+        {
+          "diameter_mm": 25,
+          "x_mm": 250,
+          "y_mm": 1575
+        },
+        {
+          "diameter_mm": 25,
+          "x_mm": 250,
+          "y_mm": 525
+        }
+      ],
+      "notches": [],
+      "edge_work": "polished edges all round",
+      "notes": null
+    },
+    {
+      "panel_id": "P2",
+      "width_mm": 500,
+      "height_mm": 2100,
+      "qty": 1,
+      "thickness_mm": 8,
+      "glass_type": "toughened",
+      "holes": [],
+      "notches": [],
+      "edge_work": "polished edges all round",
+      "notes": null
+    },
+    {
+      "panel_id": "P3",
+      "width_mm": 400,
+      "height_mm": 2100,
+      "qty": 1,
+      "thickness_mm": 8,
+      "glass_type": "toughened",
+      "holes": [
+        {
+          "diameter_mm": 25,
+          "x_mm": 200,
+          "y_mm": 1050
+        }
+      ],
+      "notches": [
+        {
+          "width_mm": 100,
+          "depth_mm": 50,
+          "position": "top-left corner"
+        }
+      ],
+      "edge_work": "polished edges all round",
+      "notes": null
+    },
+    {
+      "panel_id": "P4",
+      "width_mm": 500,
+      "height_mm": 2100,
+      "qty": 1,
+      "thickness_mm": 8,
+      "glass_type": "toughened",
+      "holes": [
+        {
+          "diameter_mm": 25,
+          "x_mm": 250,
+          "y_mm": 1575
+        },
+        {
+          "diameter_mm": 25,
+          "x_mm": 250,
+          "y_mm": 525
+        }
+      ],
+      "notches": [],
+      "edge_work": "polished edges all round",
+      "notes": null
+    },
+    {
+      "panel_id": "P5",
+      "width_mm": 500,
+      "height_mm": 2100,
+      "qty": 1,
+      "thickness_mm": 8,
+      "glass_type": "toughened",
+      "holes": [
+        {
+          "diameter_mm": 25,
+          "x_mm": 250,
+          "y_mm": 1050
+        }
+      ],
+      "notches": [],
+      "edge_work": "polished edges all round",
+      "notes": null
+    }
+  ],
+  "expected_flags": []
+}

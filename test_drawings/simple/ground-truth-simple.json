@@ -1,0 +1,35 @@
+{
+  "drawing_id": "01-simple",
+  "description": "One rectangular panel, two Ø25 holes. Written before running the system.",
+  "coordinate_convention": "x_mm/y_mm = hole centre measured from the panel's bottom-left corner",
+  "overall": {
+    "width_mm": 900,
+    "height_mm": 1200
+  },
+  "panels": [
+    {
+      "panel_id": "P1",
+      "width_mm": 900,
+      "height_mm": 1200,
+      "qty": 1,
+      "thickness_mm": 6,
+      "glass_type": "clear",
+      "holes": [
+        {
+          "diameter_mm": 25,
+          "x_mm": 150,
+          "y_mm": 600
+        },
+        {
+          "diameter_mm": 25,
+          "x_mm": 750,
+          "y_mm": 600
+        }
+      ],
+      "notches": [],
+      "edge_work": null,
+      "notes": null
+    }
+  ],
+  "expected_flags": []
+}

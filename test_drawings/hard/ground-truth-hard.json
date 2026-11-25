@@ -1,0 +1,63 @@
+{
+  "drawing_id": "03-hard",
+  "description": "Messy handwritten drawing photographed at an angle in poor light. Crossed-out width correction (650 -> 600) and an illegible thickness note. Written before running the system.",
+  "coordinate_convention": "x_mm/y_mm = hole centre measured from each panel's own bottom-left corner",
+  "overall": {
+    "width_mm": 1500,
+    "height_mm": 1000
+  },
+  "panels": [
+    {
+      "panel_id": "P1",
+      "width_mm": 900,
+      "height_mm": 1000,
+      "qty": 1,
+      "thickness_mm": null,
+      "glass_type": null,
+      "holes": [
+        {
+          "diameter_mm": 25,
+          "x_mm": 450,
+          "y_mm": 300
+        },
+        {
+          "diameter_mm": 25,
+          "x_mm": 450,
+          "y_mm": 700
+        }
+      ],
+      "notches": [],
+      "edge_work": null,
+      "notes": null
+    },
+    {
+      "panel_id": "P2",
+      "width_mm": 600,
+      "height_mm": 1000,
+      "qty": 1,
+      "thickness_mm": null,
+      "glass_type": null,
+      "holes": [
+        {
+          "diameter_mm": 25,
+          "x_mm": 300,
+          "y_mm": 500
+        }
+      ],
+      "notches": [
+        {
+          "width_mm": 50,
+          "depth_mm": 50,
+          "position": "top-right corner (offcut)"
+        }
+      ],
+      "edge_work": null,
+      "notes": "width first written as 650, crossed out and corrected to 600"
+    }
+  ],
+  "expected_flags": [
+    "thickness_mm is illegible ('10mm??') on both panels - system must mark CHECK, not guess",
+    "glass_type is not stated - system must mark CHECK, not guess",
+    "P2 width 600 is a hand correction over a crossed-out 650 - low confidence is acceptable if flagged"
+  ]
+}
