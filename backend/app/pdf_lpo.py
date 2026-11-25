@@ -173,7 +173,9 @@ def totals_text(document: LpoDocument) -> str:
     drawing = document.drawing
     pieces = sum(line.qty or 1 for line in drawing.lines)
     area = f"{drawing.total_area_m2:.3f} m²"
-    if not drawing.area_complete:
+    if drawing.lines and all(line.area_m2 is None for line in drawing.lines):
+        area = "not available until the CHECK sizes are confirmed"
+    elif not drawing.area_complete:
         missing = sum(1 for line in drawing.lines if line.area_m2 is None)
         area += f" (excludes {missing} line{'s' if missing != 1 else ''} marked CHECK)"
     return (

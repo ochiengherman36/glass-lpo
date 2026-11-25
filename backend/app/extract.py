@@ -35,7 +35,10 @@ written value, keep status unclear and describe the correction in raw_text.
    raw_text is what you actually see, with '?' for unreadable characters.
 3. A note that explicitly covers all or several panels (for example 'ALL PANELS H=2100', \
 'QTY 1 EACH', '8MM TOUGHENED', 'Ø25 TYP') is written information: apply it to every panel it \
-covers and mention the note in that panel's notes.
+covers and mention the note in that panel's notes. Likewise, a single height dimension drawn beside \
+one row of side-by-side panels is the height of every panel in that row, and a single width \
+dimension beside one column of stacked panels is the width of every panel in that column: apply it \
+to each of those panels and say so in their notes.
 4. Units are millimetres unless the drawing says otherwise. 'Ø25', 'Q25' or 'O25' next to a \
 circle means a hole of 25 mm diameter.
 5. One record per glass panel. Use the panel labels written on the drawing. If panels are \
@@ -51,7 +54,9 @@ is drawn.
 8. Panel confidence: high when every written value is clear; medium when a secondary value \
 (thickness, glass type, edge work, hole position) is unclear; low when width, height, quantity or \
 a hole diameter is unclear or missing. Explain why in confidence_reason.
-9. List everything you could not read in unreadable_items.
+9. unreadable_items is only for marks that are written on the drawing but cannot be read. Do not \
+list values that are simply not on the drawing (status not_shown already records those), and do \
+not repeat a value you already marked unclear on a panel.
 10. Stains, rings, smudges and scribbles are not holes, notches or dimensions: ignore them. Copy \
 handwritten notes that are not about the glass itself (for example delivery or contact notes) into \
 general_notes.

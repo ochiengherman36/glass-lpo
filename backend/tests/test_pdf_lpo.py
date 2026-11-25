@@ -87,6 +87,14 @@ def test_check_is_never_split_across_lines(tmp_path):
     assert "CHECK" in text
 
 
+def test_total_area_says_not_available_when_every_line_is_check(tmp_path):
+    document = lpo_document(drawing([panel(width_mm=unclear("?00"))], stated_hole_count=not_shown()))
+
+    _, text = read_pdf(write_pdf(document, tmp_path / "lpo.pdf"))
+
+    assert "Total area: not available until the CHECK sizes are confirmed" in text
+
+
 def test_no_prices_on_the_lpo(tmp_path):
     _, text = read_pdf(write_pdf(lpo_document(), tmp_path / "lpo.pdf"))
 

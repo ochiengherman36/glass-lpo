@@ -1,7 +1,7 @@
 {
   "drawing_id": "02-realistic",
   "description": "Glass door, overall 2400x2100, 5 panels, one notch, six Ø25 holes. Written before running the system.",
-  "coordinate_convention": "x_mm/y_mm = hole centre measured from each panel's own bottom-left corner",
+  "coordinate_convention": "x_mm/y_mm = hole centre from the panel bottom-left corner; null when the drawing does not dimension the position",
   "overall": {
     "width_mm": 2400,
     "height_mm": 2100
@@ -17,13 +17,13 @@
       "holes": [
         {
           "diameter_mm": 25,
-          "x_mm": 250,
-          "y_mm": 1575
+          "x_mm": null,
+          "y_mm": null
         },
         {
           "diameter_mm": 25,
-          "x_mm": 250,
-          "y_mm": 525
+          "x_mm": null,
+          "y_mm": null
         }
       ],
       "notches": [],
@@ -52,8 +52,8 @@
       "holes": [
         {
           "diameter_mm": 25,
-          "x_mm": 200,
-          "y_mm": 1050
+          "x_mm": null,
+          "y_mm": null
         }
       ],
       "notches": [
@@ -76,13 +76,13 @@
       "holes": [
         {
           "diameter_mm": 25,
-          "x_mm": 250,
-          "y_mm": 1575
+          "x_mm": null,
+          "y_mm": null
         },
         {
           "diameter_mm": 25,
-          "x_mm": 250,
-          "y_mm": 525
+          "x_mm": null,
+          "y_mm": null
         }
       ],
       "notches": [],
@@ -99,8 +99,8 @@
       "holes": [
         {
           "diameter_mm": 25,
-          "x_mm": 250,
-          "y_mm": 1050
+          "x_mm": null,
+          "y_mm": null
         }
       ],
       "notches": [],

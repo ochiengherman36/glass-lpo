@@ -13,6 +13,7 @@ from app.excel import write_excel
 from app.extract import ExtractionResult, extract_drawing
 from app.lpo import COLUMNS, LpoDocument, generate_lpo_number, rows
 from app.pdf_lpo import write_pdf
+from app.schema import DrawingExtraction
 from app.validate import ValidatedDrawing, validate_drawing
 
 logger = logging.getLogger(__name__)
@@ -23,6 +24,23 @@ RESULT_FILE = "result.json"
 
 def claude_extractor(enhanced_path: Path, original_path: Path) -> ExtractionResult:
     return extract_drawing(enhanced_path, original_path)
+
+
+def replay_extractor(result_path: Path | str) -> Extractor:
+    saved = json.loads(Path(result_path).read_text(encoding="utf-8"))
+    usage = saved.get("usage", {})
+    result = ExtractionResult(
+        drawing=DrawingExtraction.model_validate(saved["extraction"]),
+        model=usage.get("model", "replay"),
+        input_tokens=usage.get("input_tokens", 0),
+        output_tokens=usage.get("output_tokens", 0),
+        fallback_used=usage.get("fallback_used", False),
+    )
+
+    def extractor(enhanced_path: Path, original_path: Path) -> ExtractionResult:
+        return result
+
+    return extractor
 
 
 @dataclass

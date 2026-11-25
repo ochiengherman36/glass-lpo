@@ -22,6 +22,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=None,
         help="Folder for the outputs (default: backend/outputs/<image name>)",
     )
+    parser.add_argument(
+        "--replay",
+        type=Path,
+        default=None,
+        metavar="RESULT_JSON",
+        help="Reuse the extraction saved in a result.json instead of calling Claude (no API cost)",
+    )
     return parser.parse_args(argv)
 
 
@@ -59,6 +66,13 @@ def main(argv: list[str] | None = None, extractor: pipeline.Extractor = pipeline
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     args = parse_args(argv)
     out_dir = args.out or AppSettings.from_env().output_dir / args.image.stem
+
+    if args.replay:
+        try:
+            extractor = pipeline.replay_extractor(args.replay)
+        except (OSError, KeyError, ValueError) as exc:
+            print(f"Error: could not load a saved extraction from {args.replay}: {exc}", file=sys.stderr)
+            return 1
 
     try:
         result = pipeline.run(args.image, out_dir, extractor=extractor)

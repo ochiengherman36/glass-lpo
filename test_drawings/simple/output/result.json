@@ -1,0 +1,179 @@
+{
+  "lpo_no": "LPO-20261125-145317",
+  "issued_at": "2026-11-25T14:53:17",
+  "source_name": "simple.jpeg",
+  "needs_check": true,
+  "steps_applied": [
+    "perspective: no paper edge found, skipped",
+    "deskew: no consistent straight lines (curved page or too few lines), skipped",
+    "removed shadows and uneven lighting, boosted contrast (CLAHE)",
+    "denoised and sharpened",
+    "upscaled x1.25"
+  ],
+  "columns": [
+    "LPO No",
+    "Line",
+    "Panel ID",
+    "Width (mm)",
+    "Height (mm)",
+    "Qty",
+    "Thickness (mm)",
+    "Glass type",
+    "Area (m²)",
+    "Hole count",
+    "Hole diameters (mm)",
+    "Hole positions",
+    "Notches/offcuts",
+    "Grooves/edge work",
+    "Notes",
+    "Confidence",
+    "Needs check (Y/N)"
+  ],
+  "panels": [
+    {
+      "LPO No": "LPO-20261125-145317",
+      "Line": 1,
+      "Panel ID": "P1",
+      "Width (mm)": 900,
+      "Height (mm)": 1200,
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CLEAR",
+      "Area (m²)": 1.08,
+      "Hole count": 2,
+      "Hole diameters (mm)": "25, 25",
+      "Hole positions": "x150 y600; x750 y600",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Panel label 'P1' written on the drawing. Quantity from 'Qty = 1'. Both holes share the 600 height dimension drawn on the right. Thickness in the title is unclear.; thickness unclear (raw: '6?MM (title reads '6?MM'; second character unclear, could be 6.5 or 66)')",
+      "Confidence": "Medium",
+      "Needs check (Y/N)": "Y"
+    }
+  ],
+  "flags": [
+    {
+      "panel_id": "P1",
+      "field": "thickness",
+      "message": "P1: thickness unclear (raw: '6?MM (title reads '6?MM'; second character unclear, could be 6.5 or 66)')",
+      "severity": "minor"
+    }
+  ],
+  "totals": {
+    "lines": 1,
+    "pieces": 1,
+    "area_m2": 1.08,
+    "area_complete": true,
+    "holes": 2
+  },
+  "usage": {
+    "model": "claude-sonnet-5-5",
+    "input_tokens": 8516,
+    "output_tokens": 1772,
+    "fallback_used": false
+  },
+  "files": {
+    "original": "original.jpg",
+    "enhanced": "enhanced.jpg",
+    "xlsx": "LPO-20261125-145317.xlsx",
+    "pdf": "LPO-20261125-145317.pdf",
+    "json": "result.json"
+  },
+  "extraction": {
+    "overall_width_mm": {
+      "value": 900.0,
+      "status": "clear",
+      "raw_text": "900"
+    },
+    "overall_height_mm": {
+      "value": 1200.0,
+      "status": "clear",
+      "raw_text": "1200"
+    },
+    "stated_hole_count": {
+      "value": 2.0,
+      "status": "clear",
+      "raw_text": "2 HOLES Ø25"
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "width_mm": {
+          "value": 900.0,
+          "status": "clear",
+          "raw_text": "900 (title '900 x 1200' and bottom dimension 900)"
+        },
+        "height_mm": {
+          "value": 1200.0,
+          "status": "clear",
+          "raw_text": "1200 (title '900 x 1200' and left dimension 1200)"
+        },
+        "qty": {
+          "value": 1.0,
+          "status": "clear",
+          "raw_text": "Qty = 1"
+        },
+        "thickness_mm": {
+          "value": null,
+          "status": "unclear",
+          "raw_text": "6?MM (title reads '6?MM'; second character unclear, could be 6.5 or 66)"
+        },
+        "glass_type": {
+          "text": "CLEAR",
+          "status": "clear"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Ø25"
+            },
+            "x_mm": {
+              "value": 150.0,
+              "status": "clear",
+              "raw_text": "150 from left edge"
+            },
+            "y_mm": {
+              "value": 600.0,
+              "status": "clear",
+              "raw_text": "600 dimension on right side, from bottom edge up to the hole centreline"
+            },
+            "position_description": "Left hole on the horizontal dashed centreline, upper half of the panel, near the left edge"
+          },
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Q25 (read as Ø25)"
+            },
+            "x_mm": {
+              "value": 750.0,
+              "status": "clear",
+              "raw_text": "900 - 150 from right edge (chain 150 | 600 | 150)"
+            },
+            "y_mm": {
+              "value": 600.0,
+              "status": "clear",
+              "raw_text": "600 dimension on right side, from bottom edge up to the hole centreline"
+            },
+            "position_description": "Right hole on the same horizontal dashed centreline, upper half of the panel, near the right edge"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Panel label 'P1' written on the drawing. Quantity from 'Qty = 1'. Both holes share the 600 height dimension drawn on the right. Thickness in the title is unclear.",
+        "confidence": "medium",
+        "confidence_reason": "Width, height, quantity, hole diameters and hole positions are all clearly written. Thickness is unclear ('6?MM') and edge work is not shown."
+      }
+    ],
+    "general_notes": [
+      "GLASS PANEL. 900 x 1200 - 6?MM CLEAR.",
+      "Qty = 1",
+      "2 HOLES Ø25"
+    ],
+    "unreadable_items": []
+  }
+}
