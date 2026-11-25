@@ -1,8 +1,13 @@
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Any
 
+from app.lpo import LpoDocument
 from app.schema import DrawingExtraction, Hole, Notch, Panel, Reading, TextReading
+from app.validate import validate_drawing
+
+ISSUED_AT = datetime(2026, 11, 25, 14, 30, 5)
 
 
 def clear(value: float) -> Reading:
@@ -65,3 +70,17 @@ def drawing(panels: list[Panel] | None = None, **overrides: Any) -> DrawingExtra
     }
     fields.update(overrides)
     return DrawingExtraction(**fields)
+
+
+def lpo_document(extraction: DrawingExtraction | None = None, lpo_no: str = "LPO-20261125-143005") -> LpoDocument:
+    return LpoDocument(
+        lpo_no=lpo_no,
+        issued_at=ISSUED_AT,
+        source_name="simple.jpeg",
+        drawing=validate_drawing(extraction or drawing()),
+    )
+
+
+def many_panels(count: int, **panel_overrides: Any) -> DrawingExtraction:
+    panels = [panel(f"P{index}", 500, 2100, **panel_overrides) for index in range(1, count + 1)]
+    return drawing(panels, overall_width_mm=not_shown(), overall_height_mm=not_shown(), stated_hole_count=not_shown())

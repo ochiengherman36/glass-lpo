@@ -6,6 +6,7 @@ from typing import Literal
 from app.schema import Confidence, DrawingExtraction, Hole, Notch, Panel, Reading, TextReading
 
 CHECK = "CHECK"
+NOT_DIMENSIONED = "not dimensioned"
 CONFIDENCE_ORDER: tuple[Confidence, ...] = ("low", "medium", "high")
 
 Severity = Literal["critical", "minor"]
@@ -235,7 +236,7 @@ class PanelValidator:
         self, hole: Hole, index: int, size: tuple[float, float] | None, diameter_ok: bool
     ) -> str:
         if hole.x_mm.status == "not_shown" and hole.y_mm.status == "not_shown":
-            return hole.position_description or "not dimensioned"
+            return hole.position_description or NOT_DIMENSIONED
 
         x_ok = self.number(hole.x_mm, "hole_positions", f"hole {index} x position", "minor")
         y_ok = self.number(hole.y_mm, "hole_positions", f"hole {index} y position", "minor")
