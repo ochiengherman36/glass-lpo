@@ -7,11 +7,15 @@ import pytest
 from PIL import Image
 
 from app.enhance import (
-    CLAUDE_LONG_SIDE,
+    DEFAULT_SETTINGS,
     EnhancementError,
+    EnhanceSettings,
+    OutputNames,
     enhance_image,
     estimate_skew_angle,
 )
+
+CLAUDE_LONG_SIDE = DEFAULT_SETTINGS.claude_long_side
 from tests.synthetic import TEST_DRAWINGS_DIR, draw_page, encode_jpeg, rotate
 
 PAPER_RGB = (245, 245, 245)
@@ -82,7 +86,16 @@ def test_small_images_are_upscaled(small_page_bytes, tmp_path):
     result = enhance_image(small_page_bytes, tmp_path)
 
     assert any(step.startswith("upscaled") for step in result.steps_applied)
-    assert long_side(result.enhanced_path) == 1200
+    assert long_side(result.enhanced_path) == 600 * DEFAULT_SETTINGS.max_upscale
+
+
+def test_settings_can_be_overridden(small_page_bytes, tmp_path):
+    settings = EnhanceSettings(claude_long_side=500, output_names=OutputNames(enhanced="clean.jpg"))
+
+    result = enhance_image(small_page_bytes, tmp_path, settings)
+
+    assert result.enhanced_path.name == "clean.jpg"
+    assert long_side(result.claude_enhanced_path) == 500
 
 
 def test_exif_orientation_is_applied(tmp_path):

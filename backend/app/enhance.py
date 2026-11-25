@@ -8,18 +8,62 @@ import cv2
 import numpy as np
 from PIL import Image, ImageOps, UnidentifiedImageError
 
-WORK_LONG_SIDE = 2000
-CLAUDE_LONG_SIDE = 1568
-MAX_UPSCALE = 2.0
-MIN_PAPER_AREA_RATIO = 0.4
-MAX_PAPER_AREA_RATIO = 0.97
-MIN_DESKEW_DEGREES = 3.0
-MAX_DESKEW_DEGREES = 10.0
-MIN_SKEW_LINES = 3
-SKEW_AGREEMENT_DEGREES = 1.0
-MIN_AGREEING_FRACTION = 0.8
-ALLOWED_FORMATS = {"JPEG", "PNG", "MPO"}
+ALLOWED_FORMATS = frozenset({"JPEG", "PNG", "MPO"})
 EXIF_ORIENTATION_TAG = 0x0112
+
+
+@dataclass(frozen=True)
+class OutputNames:
+    original: str = "original.jpg"
+    enhanced: str = "enhanced.jpg"
+    claude_enhanced: str = "claude_enhanced.jpg"
+    claude_original: str = "claude_original.jpg"
+
+
+@dataclass(frozen=True)
+class EnhanceSettings:
+    work_long_side: int = 2000
+    claude_long_side: int = 1568
+    max_upscale: float = 2.0
+    jpeg_quality: int = 95
+
+    edge_blur_kernel: int = 5
+    paper_canny_low: int = 50
+    paper_canny_high: int = 150
+    paper_edge_dilate_kernel: int = 3
+    paper_edge_dilate_iterations: int = 2
+    paper_candidate_contours: int = 5
+    paper_poly_epsilon: float = 0.02
+    min_paper_area_ratio: float = 0.4
+    max_paper_area_ratio: float = 0.97
+
+    line_canny_low: int = 30
+    line_canny_high: int = 100
+    line_min_length_fraction: float = 0.25
+    line_hough_threshold: int = 100
+    line_hough_angle_step_degrees: float = 0.25
+    line_max_gap: int = 20
+    min_deskew_degrees: float = 3.0
+    max_deskew_degrees: float = 10.0
+    min_skew_lines: int = 3
+    skew_agreement_degrees: float = 1.0
+    min_agreeing_fraction: float = 0.8
+
+    background_dilate_kernel: int = 7
+    background_median_kernel: int = 21
+    clahe_clip_limit: float = 2.0
+    clahe_tile_grid: int = 8
+
+    denoise_strength: float = 10.0
+    denoise_template_window: int = 7
+    denoise_search_window: int = 21
+    sharpen_sigma: float = 1.5
+    sharpen_amount: float = 0.5
+
+    output_names: OutputNames = field(default_factory=OutputNames)
+
+
+DEFAULT_SETTINGS = EnhanceSettings()
 
 
 class EnhancementError(ValueError):
@@ -36,37 +80,44 @@ class EnhanceResult:
     steps_applied: list[str] = field(default_factory=list)
 
 
-def enhance_image(source: Path | str | bytes, out_dir: Path | str) -> EnhanceResult:
+def enhance_image(
+    source: Path | str | bytes,
+    out_dir: Path | str,
+    settings: EnhanceSettings = DEFAULT_SETTINGS,
+) -> EnhanceResult:
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     steps: list[str] = []
 
     original = load_image(source, steps)
 
-    work = resize_long_side(original, WORK_LONG_SIDE, allow_upscale=False)
+    work = resize_long_side(original, settings.work_long_side, allow_upscale=False)
     if work.shape != original.shape:
-        steps.append(f"resized to {WORK_LONG_SIDE} px long side")
+        steps.append(f"resized to {settings.work_long_side} px long side")
 
-    work, perspective_corrected = correct_perspective(work, steps)
+    work, perspective_corrected = correct_perspective(work, steps, settings)
     if not perspective_corrected:
-        work = deskew(work, steps)
+        work = deskew(work, steps, settings)
 
-    gray = normalize_lighting(work, steps)
-    gray = denoise_and_sharpen(gray, steps)
-    gray = upscale_if_small(gray, steps)
+    gray = normalize_lighting(work, steps, settings)
+    gray = denoise_and_sharpen(gray, steps, settings)
+    gray = upscale_if_small(gray, steps, settings)
 
+    names = settings.output_names
     result = EnhanceResult(
-        original_path=out_dir / "original.jpg",
-        enhanced_path=out_dir / "enhanced.jpg",
-        claude_enhanced_path=out_dir / "claude_enhanced.jpg",
-        claude_original_path=out_dir / "claude_original.jpg",
+        original_path=out_dir / names.original,
+        enhanced_path=out_dir / names.enhanced,
+        claude_enhanced_path=out_dir / names.claude_enhanced,
+        claude_original_path=out_dir / names.claude_original,
         perspective_corrected=perspective_corrected,
         steps_applied=steps,
     )
-    write_jpeg(result.original_path, original)
-    write_jpeg(result.enhanced_path, gray)
-    write_jpeg(result.claude_enhanced_path, resize_long_side(gray, CLAUDE_LONG_SIDE, allow_upscale=False))
-    write_jpeg(result.claude_original_path, resize_long_side(original, CLAUDE_LONG_SIDE, allow_upscale=False))
+    claude_enhanced = resize_long_side(gray, settings.claude_long_side, allow_upscale=False)
+    claude_original = resize_long_side(original, settings.claude_long_side, allow_upscale=False)
+    write_jpeg(result.original_path, original, settings.jpeg_quality)
+    write_jpeg(result.enhanced_path, gray, settings.jpeg_quality)
+    write_jpeg(result.claude_enhanced_path, claude_enhanced, settings.jpeg_quality)
+    write_jpeg(result.claude_original_path, claude_original, settings.jpeg_quality)
     return result
 
 
@@ -105,19 +156,30 @@ def resize_long_side(image: np.ndarray, target: int, allow_upscale: bool) -> np.
     return cv2.resize(image, size, interpolation=interpolation)
 
 
-def find_paper_quad(image: np.ndarray) -> np.ndarray | None:
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(cv2.GaussianBlur(gray, (5, 5), 0), 50, 150)
-    edges = cv2.dilate(edges, np.ones((3, 3), np.uint8), iterations=2)
+def to_gray(image: np.ndarray) -> np.ndarray:
+    return image if image.ndim == 2 else cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+
+def blurred_edges(gray: np.ndarray, low: int, high: int, settings: EnhanceSettings) -> np.ndarray:
+    kernel = (settings.edge_blur_kernel, settings.edge_blur_kernel)
+    return cv2.Canny(cv2.GaussianBlur(gray, kernel, 0), low, high)
+
+
+def find_paper_quad(image: np.ndarray, settings: EnhanceSettings = DEFAULT_SETTINGS) -> np.ndarray | None:
+    edges = blurred_edges(to_gray(image), settings.paper_canny_low, settings.paper_canny_high, settings)
+    dilate_kernel = np.ones((settings.paper_edge_dilate_kernel,) * 2, np.uint8)
+    edges = cv2.dilate(edges, dilate_kernel, iterations=settings.paper_edge_dilate_iterations)
     contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     image_area = image.shape[0] * image.shape[1]
-    for contour in sorted(contours, key=cv2.contourArea, reverse=True)[:5]:
-        approx = cv2.approxPolyDP(contour, 0.02 * cv2.arcLength(contour, True), True)
+    largest = sorted(contours, key=cv2.contourArea, reverse=True)[: settings.paper_candidate_contours]
+    for contour in largest:
+        epsilon = settings.paper_poly_epsilon * cv2.arcLength(contour, True)
+        approx = cv2.approxPolyDP(contour, epsilon, True)
         if len(approx) != 4 or not cv2.isContourConvex(approx):
             continue
         area_ratio = cv2.contourArea(approx) / image_area
-        if MIN_PAPER_AREA_RATIO <= area_ratio <= MAX_PAPER_AREA_RATIO:
+        if settings.min_paper_area_ratio <= area_ratio <= settings.max_paper_area_ratio:
             return approx.reshape(4, 2).astype(np.float32)
     return None
 
@@ -132,8 +194,10 @@ def order_corners(points: np.ndarray) -> np.ndarray:
     return np.array([top_left, top_right, bottom_right, bottom_left], dtype=np.float32)
 
 
-def correct_perspective(image: np.ndarray, steps: list[str]) -> tuple[np.ndarray, bool]:
-    quad = find_paper_quad(image)
+def correct_perspective(
+    image: np.ndarray, steps: list[str], settings: EnhanceSettings = DEFAULT_SETTINGS
+) -> tuple[np.ndarray, bool]:
+    quad = find_paper_quad(image, settings)
     if quad is None:
         steps.append("perspective: no paper edge found, skipped")
         return image, False
@@ -147,35 +211,43 @@ def correct_perspective(image: np.ndarray, steps: list[str]) -> tuple[np.ndarray
     return cv2.warpPerspective(image, matrix, (width, height)), True
 
 
-def horizontal_line_angles(image: np.ndarray) -> list[float]:
-    gray = image if image.ndim == 2 else cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(cv2.GaussianBlur(gray, (5, 5), 0), 30, 100)
-    min_length = gray.shape[1] // 4
-    lines = cv2.HoughLinesP(edges, 1, np.pi / 720, threshold=100, minLineLength=min_length, maxLineGap=20)
+def horizontal_line_angles(image: np.ndarray, settings: EnhanceSettings = DEFAULT_SETTINGS) -> list[float]:
+    gray = to_gray(image)
+    edges = blurred_edges(gray, settings.line_canny_low, settings.line_canny_high, settings)
+    lines = cv2.HoughLinesP(
+        edges,
+        rho=1,
+        theta=np.radians(settings.line_hough_angle_step_degrees),
+        threshold=settings.line_hough_threshold,
+        minLineLength=int(gray.shape[1] * settings.line_min_length_fraction),
+        maxLineGap=settings.line_max_gap,
+    )
     if lines is None:
         return []
     angles = [float(np.degrees(np.arctan2(y2 - y1, x2 - x1))) for x1, y1, x2, y2 in lines.reshape(-1, 4)]
-    return [angle for angle in angles if abs(angle) <= MAX_DESKEW_DEGREES]
+    return [angle for angle in angles if abs(angle) <= settings.max_deskew_degrees]
 
 
-def estimate_skew_angle(image: np.ndarray) -> float | None:
-    angles = np.array(horizontal_line_angles(image))
-    if len(angles) < MIN_SKEW_LINES:
+def estimate_skew_angle(image: np.ndarray, settings: EnhanceSettings = DEFAULT_SETTINGS) -> float | None:
+    angles = np.array(horizontal_line_angles(image, settings))
+    if len(angles) < settings.min_skew_lines:
         return None
     median = float(np.median(angles))
-    agreeing = np.mean(np.abs(angles - median) <= SKEW_AGREEMENT_DEGREES)
-    if agreeing < MIN_AGREEING_FRACTION:
+    agreeing = np.mean(np.abs(angles - median) <= settings.skew_agreement_degrees)
+    if agreeing < settings.min_agreeing_fraction:
         return None
     return median
 
 
-def deskew(image: np.ndarray, steps: list[str]) -> np.ndarray:
-    angle = estimate_skew_angle(image)
+def deskew(image: np.ndarray, steps: list[str], settings: EnhanceSettings = DEFAULT_SETTINGS) -> np.ndarray:
+    angle = estimate_skew_angle(image, settings)
     if angle is None:
         steps.append("deskew: no consistent straight lines (curved page or too few lines), skipped")
         return image
-    if abs(angle) < MIN_DESKEW_DEGREES:
-        steps.append(f"deskew: page within {MIN_DESKEW_DEGREES:.0f} deg of straight ({angle:.1f} deg), left as is")
+    if abs(angle) < settings.min_deskew_degrees:
+        steps.append(
+            f"deskew: page within {settings.min_deskew_degrees:.0f} deg of straight ({angle:.1f} deg), left as is"
+        )
         return image
 
     height, width = image.shape[:2]
@@ -184,32 +256,48 @@ def deskew(image: np.ndarray, steps: list[str]) -> np.ndarray:
     return cv2.warpAffine(image, matrix, (width, height), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
 
 
-def normalize_lighting(image: np.ndarray, steps: list[str]) -> np.ndarray:
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    background = cv2.medianBlur(cv2.dilate(gray, np.ones((7, 7), np.uint8)), 21)
+def normalize_lighting(
+    image: np.ndarray, steps: list[str], settings: EnhanceSettings = DEFAULT_SETTINGS
+) -> np.ndarray:
+    gray = to_gray(image)
+    dilate_kernel = np.ones((settings.background_dilate_kernel,) * 2, np.uint8)
+    background = cv2.medianBlur(cv2.dilate(gray, dilate_kernel), settings.background_median_kernel)
     normalized = cv2.divide(gray, background, scale=255)
-    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+    clahe = cv2.createCLAHE(
+        clipLimit=settings.clahe_clip_limit,
+        tileGridSize=(settings.clahe_tile_grid, settings.clahe_tile_grid),
+    )
     steps.append("removed shadows and uneven lighting, boosted contrast (CLAHE)")
     return clahe.apply(normalized)
 
 
-def denoise_and_sharpen(gray: np.ndarray, steps: list[str]) -> np.ndarray:
-    denoised = cv2.fastNlMeansDenoising(gray, None, h=10, templateWindowSize=7, searchWindowSize=21)
-    blurred = cv2.GaussianBlur(denoised, (0, 0), sigmaX=1.5)
+def denoise_and_sharpen(
+    gray: np.ndarray, steps: list[str], settings: EnhanceSettings = DEFAULT_SETTINGS
+) -> np.ndarray:
+    denoised = cv2.fastNlMeansDenoising(
+        gray,
+        None,
+        h=settings.denoise_strength,
+        templateWindowSize=settings.denoise_template_window,
+        searchWindowSize=settings.denoise_search_window,
+    )
+    blurred = cv2.GaussianBlur(denoised, (0, 0), sigmaX=settings.sharpen_sigma)
     steps.append("denoised and sharpened")
-    return cv2.addWeighted(denoised, 1.5, blurred, -0.5, 0)
+    return cv2.addWeighted(denoised, 1 + settings.sharpen_amount, blurred, -settings.sharpen_amount, 0)
 
 
-def upscale_if_small(gray: np.ndarray, steps: list[str]) -> np.ndarray:
+def upscale_if_small(
+    gray: np.ndarray, steps: list[str], settings: EnhanceSettings = DEFAULT_SETTINGS
+) -> np.ndarray:
     long_side = max(gray.shape[:2])
-    if long_side >= WORK_LONG_SIDE:
+    if long_side >= settings.work_long_side:
         return gray
-    scale = min(MAX_UPSCALE, WORK_LONG_SIDE / long_side)
+    scale = min(settings.max_upscale, settings.work_long_side / long_side)
     steps.append(f"upscaled x{scale:.2f}")
     return resize_long_side(gray, round(long_side * scale), allow_upscale=True)
 
 
-def write_jpeg(path: Path, image: np.ndarray, quality: int = 95) -> None:
+def write_jpeg(path: Path, image: np.ndarray, quality: int) -> None:
     ok, encoded = cv2.imencode(".jpg", image, [cv2.IMWRITE_JPEG_QUALITY, quality])
     if not ok:
         raise EnhancementError(f"Could not encode {path.name}")
