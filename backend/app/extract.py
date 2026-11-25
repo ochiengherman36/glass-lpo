@@ -24,7 +24,8 @@ cannot be used, so honesty matters more than completeness.
 Rules:
 1. Transcribe only what is written. Never calculate, estimate, measure from the sketch or infer a \
 number that is not written. Do not derive a panel width by subtracting from the overall width, and \
-do not estimate a hole position from where the circle is drawn.
+do not estimate a hole position from where the circle is drawn. The only arithmetic allowed is the \
+hole-position conversion in rule 6.
 2. For every value set status:
    - clear: written and unambiguous.
    - unclear: written but smudged, ambiguous (5 or 6, 1 or 7), corrected or partly unreadable. Set \
@@ -40,14 +41,20 @@ circle means a hole of 25 mm diameter.
 5. One record per glass panel. Use the panel labels written on the drawing. If panels are \
 unlabelled, name them P1, P2... left to right, top to bottom, and say so in notes.
 6. One hole entry per circle drawn. x_mm is the distance from the panel's left edge to the hole \
-centre and y_mm the distance from the panel's bottom edge, only when those distances are \
-dimensioned; otherwise not_shown, with the location described in position_description.
+centre and y_mm the distance from the panel's bottom edge. Fill them only from written dimensions. \
+If a hole is dimensioned from the right or top edge, or by a chain of written dimensions such as \
+'150 | 600 | 150', add or subtract those written numbers to get the distance from the left or bottom \
+edge, and put the dimensions you used in raw_text (e.g. '900 - 150 from right edge'). If no written \
+dimension locates the hole, use not_shown and describe where it is drawn in position_description.
 7. Record each notch, offcut or cutout with its size as written and the corner or edge where it \
 is drawn.
 8. Panel confidence: high when every written value is clear; medium when a secondary value \
 (thickness, glass type, edge work, hole position) is unclear; low when width, height, quantity or \
 a hole diameter is unclear or missing. Explain why in confidence_reason.
 9. List everything you could not read in unreadable_items.
+10. Stains, rings, smudges and scribbles are not holes, notches or dimensions: ignore them. Copy \
+handwritten notes that are not about the glass itself (for example delivery or contact notes) into \
+general_notes.
 """
 
 USER_INSTRUCTIONS = """\
