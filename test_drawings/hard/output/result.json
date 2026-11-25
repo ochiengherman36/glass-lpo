@@ -1,0 +1,296 @@
+{
+  "lpo_no": "LPO-20261125-155711",
+  "issued_at": "2026-11-25T15:57:11",
+  "source_name": "hard.jpeg",
+  "needs_check": true,
+  "steps_applied": [
+    "perspective: no paper edge found, skipped",
+    "deskew: no consistent straight lines (curved page or too few lines), skipped",
+    "removed shadows and uneven lighting, boosted contrast (CLAHE)",
+    "denoised and sharpened",
+    "upscaled x1.50"
+  ],
+  "columns": [
+    "LPO No",
+    "Line",
+    "Panel ID",
+    "Width (mm)",
+    "Height (mm)",
+    "Qty",
+    "Thickness (mm)",
+    "Glass type",
+    "Area (m²)",
+    "Hole count",
+    "Hole diameters (mm)",
+    "Hole positions",
+    "Notches/offcuts",
+    "Grooves/edge work",
+    "Notes",
+    "Confidence",
+    "Needs check (Y/N)"
+  ],
+  "panels": [
+    {
+      "LPO No": "LPO-20261125-155711",
+      "Line": 1,
+      "Panel ID": "P1",
+      "Width (mm)": 900,
+      "Height (mm)": 1000,
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": 0.9,
+      "Hole count": 2,
+      "Hole diameters (mm)": "25, 25",
+      "Hole positions": "not dimensioned",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Height 1000 taken from the single height dimension beside the row of side-by-side panels. No hole positions are dimensioned.; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261125-155711",
+      "Line": 2,
+      "Panel ID": "P2",
+      "Width (mm)": 600,
+      "Height (mm)": 1000,
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": 0.6,
+      "Hole count": 1,
+      "Hole diameters (mm)": "25",
+      "Hole positions": "not dimensioned",
+      "Notches/offcuts": "offcut 50 x 50 mm, top-right corner",
+      "Grooves/edge work": "",
+      "Notes": "Height 1000 taken from the single height dimension beside the row of side-by-side panels. Offcut labelled 'of cut 50 x 50' at the top-right corner. No hole position is dimensioned.; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    }
+  ],
+  "flags": [
+    {
+      "panel_id": "P1",
+      "field": "qty",
+      "message": "P1: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "thickness",
+      "message": "P1: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "glass_type",
+      "message": "P1: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "qty",
+      "message": "P2: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "thickness",
+      "message": "P2: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "glass_type",
+      "message": "P2: glass type not written on drawing",
+      "severity": "minor"
+    }
+  ],
+  "totals": {
+    "lines": 2,
+    "pieces": 2,
+    "area_m2": 1.5,
+    "area_complete": true,
+    "holes": 3
+  },
+  "usage": {
+    "model": "claude-sonnet-5-5",
+    "input_tokens": 7524,
+    "output_tokens": 1657,
+    "fallback_used": false
+  },
+  "files": {
+    "original": "original.jpg",
+    "enhanced": "enhanced.jpg",
+    "xlsx": "LPO-20261125-155711.xlsx",
+    "pdf": "LPO-20261125-155711.pdf",
+    "json": "result.json"
+  },
+  "extraction": {
+    "overall_width_mm": {
+      "value": 1500.0,
+      "status": "clear",
+      "raw_text": "1500"
+    },
+    "overall_height_mm": {
+      "value": 1000.0,
+      "status": "clear",
+      "raw_text": "1000"
+    },
+    "stated_hole_count": {
+      "value": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "width_mm": {
+          "value": 900.0,
+          "status": "clear",
+          "raw_text": "900"
+        },
+        "height_mm": {
+          "value": 1000.0,
+          "status": "clear",
+          "raw_text": "1000 (single height dimension beside the row of side-by-side panels)"
+        },
+        "qty": {
+          "value": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Q25"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "upper part of the panel, towards the left, near the left edge"
+          },
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Q25"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "lower part of the panel, left of centre"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Height 1000 taken from the single height dimension beside the row of side-by-side panels. No hole positions are dimensioned.",
+        "confidence": "low",
+        "confidence_reason": "Quantity is not shown. Hole positions are not dimensioned. Thickness, glass type and edge work are not shown."
+      },
+      {
+        "panel_id": "P2",
+        "width_mm": {
+          "value": 600.0,
+          "status": "clear",
+          "raw_text": "600"
+        },
+        "height_mm": {
+          "value": 1000.0,
+          "status": "clear",
+          "raw_text": "1000 (single height dimension beside the row of side-by-side panels)"
+        },
+        "qty": {
+          "value": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Q25"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "upper-middle of the panel, near the left side, below the 'P2' label"
+          }
+        ],
+        "notches": [
+          {
+            "kind": "offcut",
+            "width_mm": {
+              "value": 50.0,
+              "status": "clear",
+              "raw_text": "50 x 50"
+            },
+            "depth_mm": {
+              "value": 50.0,
+              "status": "clear",
+              "raw_text": "50 x 50"
+            },
+            "position": "top-right corner"
+          }
+        ],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Height 1000 taken from the single height dimension beside the row of side-by-side panels. Offcut labelled 'of cut 50 x 50' at the top-right corner. No hole position is dimensioned.",
+        "confidence": "low",
+        "confidence_reason": "Quantity is not shown. Hole position is not dimensioned. Thickness, glass type and edge work are not shown."
+      }
+    ],
+    "general_notes": [
+      "GLASS - 1500 x 1000"
+    ],
+    "unreadable_items": []
+  }
+}

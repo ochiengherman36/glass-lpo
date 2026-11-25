@@ -1,0 +1,485 @@
+{
+  "lpo_no": "LPO-20261125-155703",
+  "issued_at": "2026-11-25T15:57:03",
+  "source_name": "realistic.jpeg",
+  "needs_check": false,
+  "steps_applied": [
+    "perspective: no paper edge found, skipped",
+    "deskew: page within 3 deg of straight (-2.5 deg), left as is",
+    "removed shadows and uneven lighting, boosted contrast (CLAHE)",
+    "denoised and sharpened",
+    "upscaled x1.53"
+  ],
+  "columns": [
+    "LPO No",
+    "Line",
+    "Panel ID",
+    "Width (mm)",
+    "Height (mm)",
+    "Qty",
+    "Thickness (mm)",
+    "Glass type",
+    "Area (m²)",
+    "Hole count",
+    "Hole diameters (mm)",
+    "Hole positions",
+    "Notches/offcuts",
+    "Grooves/edge work",
+    "Notes",
+    "Confidence",
+    "Needs check (Y/N)"
+  ],
+  "panels": [
+    {
+      "LPO No": "LPO-20261125-155703",
+      "Line": 1,
+      "Panel ID": "P1",
+      "Width (mm)": 500,
+      "Height (mm)": 2100,
+      "Qty": 1,
+      "Thickness (mm)": 8,
+      "Glass type": "toughened",
+      "Area (m²)": 1.05,
+      "Hole count": 2,
+      "Hole diameters (mm)": "25, 25",
+      "Hole positions": "not dimensioned",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "polished edges all round",
+      "Notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; diameter from 'Ø25 TYP'; edge work from 'POLISHED EDGES ALL ROUND'. No hole position dimensions are written.",
+      "Confidence": "Medium",
+      "Needs check (Y/N)": "N"
+    },
+    {
+      "LPO No": "LPO-20261125-155703",
+      "Line": 2,
+      "Panel ID": "P2",
+      "Width (mm)": 500,
+      "Height (mm)": 2100,
+      "Qty": 1,
+      "Thickness (mm)": 8,
+      "Glass type": "toughened",
+      "Area (m²)": 1.05,
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "polished edges all round",
+      "Notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; edge work from 'POLISHED EDGES ALL ROUND'. No holes drawn on this panel.",
+      "Confidence": "High",
+      "Needs check (Y/N)": "N"
+    },
+    {
+      "LPO No": "LPO-20261125-155703",
+      "Line": 3,
+      "Panel ID": "P3",
+      "Width (mm)": 400,
+      "Height (mm)": 2100,
+      "Qty": 1,
+      "Thickness (mm)": 8,
+      "Glass type": "toughened",
+      "Area (m²)": 0.84,
+      "Hole count": 1,
+      "Hole diameters (mm)": "25",
+      "Hole positions": "not dimensioned",
+      "Notches/offcuts": "notch 100 x 50 mm, top-left corner of P3",
+      "Grooves/edge work": "polished edges all round",
+      "Notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; diameter from 'Ø25 TYP'; edge work from 'POLISHED EDGES ALL ROUND'. Notch is written as 100 x 50, with the width/depth order assumed to follow the written order. No hole position dimensions are written.",
+      "Confidence": "Medium",
+      "Needs check (Y/N)": "N"
+    },
+    {
+      "LPO No": "LPO-20261125-155703",
+      "Line": 4,
+      "Panel ID": "P4",
+      "Width (mm)": 500,
+      "Height (mm)": 2100,
+      "Qty": 1,
+      "Thickness (mm)": 8,
+      "Glass type": "toughened",
+      "Area (m²)": 1.05,
+      "Hole count": 2,
+      "Hole diameters (mm)": "25, 25",
+      "Hole positions": "not dimensioned",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "polished edges all round",
+      "Notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; diameter from 'Ø25 TYP'; edge work from 'POLISHED EDGES ALL ROUND'. No hole position dimensions are written.",
+      "Confidence": "Medium",
+      "Needs check (Y/N)": "N"
+    },
+    {
+      "LPO No": "LPO-20261125-155703",
+      "Line": 5,
+      "Panel ID": "P5",
+      "Width (mm)": 500,
+      "Height (mm)": 2100,
+      "Qty": 1,
+      "Thickness (mm)": 8,
+      "Glass type": "toughened",
+      "Area (m²)": 1.05,
+      "Hole count": 1,
+      "Hole diameters (mm)": "25",
+      "Hole positions": "not dimensioned",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "polished edges all round",
+      "Notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; diameter from 'Ø25 TYP'; edge work from 'POLISHED EDGES ALL ROUND'. No hole position dimensions are written.",
+      "Confidence": "Medium",
+      "Needs check (Y/N)": "N"
+    }
+  ],
+  "flags": [],
+  "totals": {
+    "lines": 5,
+    "pieces": 5,
+    "area_m2": 5.04,
+    "area_complete": true,
+    "holes": 6
+  },
+  "usage": {
+    "model": "claude-sonnet-5-5",
+    "input_tokens": 7547,
+    "output_tokens": 4335,
+    "fallback_used": false
+  },
+  "files": {
+    "original": "original.jpg",
+    "enhanced": "enhanced.jpg",
+    "xlsx": "LPO-20261125-155703.xlsx",
+    "pdf": "LPO-20261125-155703.pdf",
+    "json": "result.json"
+  },
+  "extraction": {
+    "overall_width_mm": {
+      "value": 2400.0,
+      "status": "clear",
+      "raw_text": "2400"
+    },
+    "overall_height_mm": {
+      "value": 2100.0,
+      "status": "clear",
+      "raw_text": "2100"
+    },
+    "stated_hole_count": {
+      "value": 6.0,
+      "status": "clear",
+      "raw_text": "Ø25 TYP (6 No.)"
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "width_mm": {
+          "value": 500.0,
+          "status": "clear",
+          "raw_text": "500"
+        },
+        "height_mm": {
+          "value": 2100.0,
+          "status": "clear",
+          "raw_text": "ALL PANELS H = 2100"
+        },
+        "qty": {
+          "value": 1.0,
+          "status": "clear",
+          "raw_text": "QTY 1 EACH"
+        },
+        "thickness_mm": {
+          "value": 8.0,
+          "status": "clear",
+          "raw_text": "8MM TOUGHENED"
+        },
+        "glass_type": {
+          "text": "toughened",
+          "status": "clear"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Ø25 TYP (6 No.)"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "upper half of the panel, roughly centred across the width (leader line from the Ø25 TYP note points to this hole)"
+          },
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Ø25 TYP (6 No.)"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "lower part of the panel, just above the panel label, roughly centred across the width"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": "polished edges all round",
+          "status": "clear"
+        },
+        "notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; diameter from 'Ø25 TYP'; edge work from 'POLISHED EDGES ALL ROUND'. No hole position dimensions are written.",
+        "confidence": "medium",
+        "confidence_reason": "Width, height, qty and hole diameters are clear, but no dimensions are written for the hole positions."
+      },
+      {
+        "panel_id": "P2",
+        "width_mm": {
+          "value": 500.0,
+          "status": "clear",
+          "raw_text": "500"
+        },
+        "height_mm": {
+          "value": 2100.0,
+          "status": "clear",
+          "raw_text": "ALL PANELS H = 2100"
+        },
+        "qty": {
+          "value": 1.0,
+          "status": "clear",
+          "raw_text": "QTY 1 EACH"
+        },
+        "thickness_mm": {
+          "value": 8.0,
+          "status": "clear",
+          "raw_text": "8MM TOUGHENED"
+        },
+        "glass_type": {
+          "text": "toughened",
+          "status": "clear"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": "polished edges all round",
+          "status": "clear"
+        },
+        "notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; edge work from 'POLISHED EDGES ALL ROUND'. No holes drawn on this panel.",
+        "confidence": "high",
+        "confidence_reason": "All written values for this panel are clear."
+      },
+      {
+        "panel_id": "P3",
+        "width_mm": {
+          "value": 400.0,
+          "status": "clear",
+          "raw_text": "400"
+        },
+        "height_mm": {
+          "value": 2100.0,
+          "status": "clear",
+          "raw_text": "ALL PANELS H = 2100"
+        },
+        "qty": {
+          "value": 1.0,
+          "status": "clear",
+          "raw_text": "QTY 1 EACH"
+        },
+        "thickness_mm": {
+          "value": 8.0,
+          "status": "clear",
+          "raw_text": "8MM TOUGHENED"
+        },
+        "glass_type": {
+          "text": "toughened",
+          "status": "clear"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Ø25 TYP (6 No.)"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "middle of the panel height, roughly centred across the width"
+          }
+        ],
+        "notches": [
+          {
+            "kind": "notch",
+            "width_mm": {
+              "value": 100.0,
+              "status": "clear",
+              "raw_text": "NOTCH 100 x 50"
+            },
+            "depth_mm": {
+              "value": 50.0,
+              "status": "clear",
+              "raw_text": "NOTCH 100 x 50"
+            },
+            "position": "top-left corner of P3 (against the P2/P3 boundary line); the leader from the note points to this corner"
+          }
+        ],
+        "edge_work": {
+          "text": "polished edges all round",
+          "status": "clear"
+        },
+        "notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; diameter from 'Ø25 TYP'; edge work from 'POLISHED EDGES ALL ROUND'. Notch is written as 100 x 50, with the width/depth order assumed to follow the written order. No hole position dimensions are written.",
+        "confidence": "medium",
+        "confidence_reason": "Width, height, qty and hole diameter are clear, but no dimensions are written for the hole position."
+      },
+      {
+        "panel_id": "P4",
+        "width_mm": {
+          "value": 500.0,
+          "status": "clear",
+          "raw_text": "500"
+        },
+        "height_mm": {
+          "value": 2100.0,
+          "status": "clear",
+          "raw_text": "ALL PANELS H = 2100"
+        },
+        "qty": {
+          "value": 1.0,
+          "status": "clear",
+          "raw_text": "QTY 1 EACH"
+        },
+        "thickness_mm": {
+          "value": 8.0,
+          "status": "clear",
+          "raw_text": "8MM TOUGHENED"
+        },
+        "glass_type": {
+          "text": "toughened",
+          "status": "clear"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Ø25 TYP (6 No.)"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "upper part of the panel, roughly centred across the width"
+          },
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Ø25 TYP (6 No.)"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "lower part of the panel, just above the panel label, roughly centred across the width"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": "polished edges all round",
+          "status": "clear"
+        },
+        "notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; diameter from 'Ø25 TYP'; edge work from 'POLISHED EDGES ALL ROUND'. No hole position dimensions are written.",
+        "confidence": "medium",
+        "confidence_reason": "Width, height, qty and hole diameters are clear, but no dimensions are written for the hole positions."
+      },
+      {
+        "panel_id": "P5",
+        "width_mm": {
+          "value": 500.0,
+          "status": "clear",
+          "raw_text": "500"
+        },
+        "height_mm": {
+          "value": 2100.0,
+          "status": "clear",
+          "raw_text": "ALL PANELS H = 2100"
+        },
+        "qty": {
+          "value": 1.0,
+          "status": "clear",
+          "raw_text": "QTY 1 EACH"
+        },
+        "thickness_mm": {
+          "value": 8.0,
+          "status": "clear",
+          "raw_text": "8MM TOUGHENED"
+        },
+        "glass_type": {
+          "text": "toughened",
+          "status": "clear"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": 25.0,
+              "status": "clear",
+              "raw_text": "Ø25 TYP (6 No.)"
+            },
+            "x_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "middle of the panel height, roughly centred across the width"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": "polished edges all round",
+          "status": "clear"
+        },
+        "notes": "Height from 'ALL PANELS H=2100' and the 2100 dimension; qty from 'QTY 1 EACH'; thickness and toughened from '8MM TOUGHENED'; diameter from 'Ø25 TYP'; edge work from 'POLISHED EDGES ALL ROUND'. No hole position dimensions are written.",
+        "confidence": "medium",
+        "confidence_reason": "Width, height, qty and hole diameter are clear, but no dimensions are written for the hole position."
+      }
+    ],
+    "general_notes": [
+      "GLASS DOOR - OVERALL 2400 X 2100",
+      "8MM TOUGHENED",
+      "NOTCH 100 X 50",
+      "Ø25 TYP (6 No.)",
+      "ALL PANELS H = 2100, QTY 1 EACH",
+      "POLISHED EDGES ALL ROUND"
+    ],
+    "unreadable_items": []
+  }
+}

@@ -50,7 +50,7 @@ If a hole is dimensioned from the right or top edge, or by a chain of written di
 edge, and put the dimensions you used in raw_text (e.g. '900 - 150 from right edge'). If no written \
 dimension locates the hole, use not_shown and describe where it is drawn in position_description.
 7. Record each notch, offcut or cutout with its size as written and the corner or edge where it \
-is drawn.
+is drawn, as a short phrase such as 'top-left corner'.
 8. Panel confidence: high when every written value is clear; medium when a secondary value \
 (thickness, glass type, edge work, hole position) is unclear; low when width, height, quantity or \
 a hole diameter is unclear or missing. Explain why in confidence_reason.

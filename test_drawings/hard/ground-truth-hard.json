@@ -1,6 +1,6 @@
 {
   "drawing_id": "03-hard",
-  "description": "Messy handwritten drawing photographed in poor light with a hand shadow. Crossed-out width correction (650 -> 600). No thickness or glass type is written. Written before running the system.",
+  "description": "Redrawn two-panel drawing, overall 1500 x 1000, with a 50 x 50 offcut and three 25 mm holes. Quantity, thickness, glass type and edge work are not written anywhere on the drawing. Updated to match the redrawn photo; the dimensions are unchanged from the original answer key.",
   "coordinate_convention": "x_mm/y_mm = hole centre from the panel bottom-left corner; null when the drawing does not dimension the position",
   "overall": {
     "width_mm": 1500,
@@ -52,12 +52,12 @@
         }
       ],
       "edge_work": null,
-      "notes": "width first written as 650, crossed out and corrected to 600"
+      "notes": null
     }
   ],
   "expected_flags": [
+    "qty is not written on the drawing - system may assume 1 but must flag it",
     "thickness_mm is not written on the drawing - system must mark CHECK, not guess",
-    "glass_type is not stated - system must mark CHECK, not guess",
-    "P2 width 600 is a hand correction over a crossed-out 650 - low confidence is acceptable if flagged"
+    "glass_type is not written on the drawing - system must mark CHECK, not guess"
   ]
 }

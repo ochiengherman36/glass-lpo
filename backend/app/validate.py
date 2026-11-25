@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Literal
 
@@ -98,6 +99,12 @@ def mm(value: float) -> str:
 
 def raw_suffix(reading: Reading) -> str:
     return f" (raw: '{reading.raw_text}')" if reading.raw_text else ""
+
+
+def short_position(text: str | None) -> str:
+    if not text:
+        return ""
+    return re.split(r"[;(]", text, maxsplit=1)[0].strip(" ,.")
 
 
 def lower_confidence(*levels: Confidence) -> Confidence:
@@ -262,7 +269,8 @@ class PanelValidator:
         label = f"{notch.kind} {index}"
         width_ok = self.number(notch.width_mm, "notches", f"{label} width")
         depth_ok = self.number(notch.depth_mm, "notches", f"{label} depth")
-        position = f", {notch.position}" if notch.position else ""
+        short = short_position(notch.position)
+        position = f", {short}" if short else ""
         if not (width_ok and depth_ok):
             return f"{notch.kind} size {CHECK}{position}"
 

@@ -216,6 +216,13 @@ def test_notch_that_fits_is_described():
     assert only_line(result).notches == ["offcut 50 x 50 mm, top-right corner"]
 
 
+def test_long_notch_positions_are_shortened_for_the_lpo():
+    wordy = notch(100, 50, "top-left corner of P3 (against the P2/P3 boundary line); the leader points to it")
+    result = validate_drawing(drawing([panel(notches=[wordy], holes=[hole(), hole()])]))
+
+    assert only_line(result).notches == ["offcut 100 x 50 mm, top-left corner of P3"]
+
+
 def test_unclear_notch_size_is_check():
     bad = Notch(kind="notch", width_mm=unclear("1?0"), depth_mm=clear(50), position="top-left corner")
     result = validate_drawing(drawing([panel(notches=[bad], holes=[hole(), hole()])]))
