@@ -138,7 +138,7 @@ docs/         architecture diagram and screenshots
   and tilts under 3° are left alone.
 - Claude's reading varies slightly between runs (an overwritten digit may come back as `CHECK (400?)` or
   `CHECK`); the rules make sure the variation is flagged, not hidden.
-- No login, rate limit or file clean-up: every upload uses the API key, so do not expose it publicly as is.
+- No login, rate limit or file clean-up: every upload uses the API key.
 - LPO numbers are timestamp-based (`LPO-YYYYMMDD-HHMMSS`), not the client's ERP sequence. No pricing.
 
 ## Screenshots
