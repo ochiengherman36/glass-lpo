@@ -1,0 +1,18 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=2.14.0",
+    "fastapi>=0.165.0",
+    "numpy>=2.5.5",
+    "opencv-python-headless>=5.1.0.95",
+    "openpyxl>=3.1.5",
+    "pillow>=13.0.0",
+    "pydantic>=2.14.4",
+    "python-dotenv>=1.2.4",
+    "python-multipart>=0.0.34",
+    "reportlab>=5.1.1",
+    "uvicorn[standard]>=0.54.0",
+]
