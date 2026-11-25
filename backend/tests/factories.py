@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
+from app.extract import ExtractionResult
 from app.lpo import LpoDocument
 from app.schema import DrawingExtraction, Hole, Notch, Panel, Reading, TextReading
 from app.validate import validate_drawing
@@ -79,6 +80,21 @@ def lpo_document(extraction: DrawingExtraction | None = None, lpo_no: str = "LPO
         source_name="simple.jpeg",
         drawing=validate_drawing(extraction or drawing()),
     )
+
+
+class FakeExtractor:
+    def __init__(self, extraction: DrawingExtraction | None = None, error: Exception | None = None) -> None:
+        self.extraction = extraction or drawing()
+        self.error = error
+        self.calls: list[tuple[Any, Any]] = []
+
+    def __call__(self, enhanced_path: Any, original_path: Any) -> ExtractionResult:
+        self.calls.append((enhanced_path, original_path))
+        if self.error is not None:
+            raise self.error
+        return ExtractionResult(
+            drawing=self.extraction, model="fake-model", input_tokens=10, output_tokens=20, fallback_used=False
+        )
 
 
 def many_panels(count: int, **panel_overrides: Any) -> DrawingExtraction:

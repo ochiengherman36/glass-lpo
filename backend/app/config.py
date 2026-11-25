@@ -10,6 +10,7 @@ BACKEND_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_MODEL = "claude-opus-5-5"
 DEFAULT_EFFORT = "high"
 DEFAULT_MAX_TOKENS = 16000
+DEFAULT_MAX_UPLOAD_MB = 15
 
 load_dotenv(BACKEND_DIR / ".env")
 
@@ -39,4 +40,19 @@ class ExtractionSettings:
             effort=env_str("ANTHROPIC_EFFORT", DEFAULT_EFFORT),
             max_tokens=int(env_str("ANTHROPIC_MAX_TOKENS", str(DEFAULT_MAX_TOKENS))),
             use_fallbacks=env_bool("ANTHROPIC_USE_FALLBACKS", True),
+        )
+
+
+@dataclass(frozen=True)
+class AppSettings:
+    output_dir: Path = BACKEND_DIR / "outputs"
+    static_dir: Path = BACKEND_DIR / "static"
+    max_upload_bytes: int = DEFAULT_MAX_UPLOAD_MB * 1024 * 1024
+
+    @classmethod
+    def from_env(cls) -> AppSettings:
+        return cls(
+            output_dir=Path(env_str("OUTPUT_DIR", str(BACKEND_DIR / "outputs"))),
+            static_dir=Path(env_str("STATIC_DIR", str(BACKEND_DIR / "static"))),
+            max_upload_bytes=int(env_str("MAX_UPLOAD_MB", str(DEFAULT_MAX_UPLOAD_MB))) * 1024 * 1024,
         )
