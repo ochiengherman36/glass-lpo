@@ -36,6 +36,8 @@ class EnhanceSettings:
     paper_poly_epsilon: float = 0.02
     min_paper_area_ratio: float = 0.4
     max_paper_area_ratio: float = 0.97
+    paper_border_band_fraction: float = 0.03
+    min_paper_border_contrast: float = 30.0
 
     line_canny_low: int = 30
     line_canny_high: int = 100
@@ -179,9 +181,23 @@ def find_paper_quad(image: np.ndarray, settings: EnhanceSettings = DEFAULT_SETTI
         if len(approx) != 4 or not cv2.isContourConvex(approx):
             continue
         area_ratio = cv2.contourArea(approx) / image_area
-        if settings.min_paper_area_ratio <= area_ratio <= settings.max_paper_area_ratio:
+        if not settings.min_paper_area_ratio <= area_ratio <= settings.max_paper_area_ratio:
+            continue
+        if stands_out_from_background(to_gray(image), approx, settings):
             return approx.reshape(4, 2).astype(np.float32)
     return None
+
+
+def stands_out_from_background(gray: np.ndarray, quad: np.ndarray, settings: EnhanceSettings = DEFAULT_SETTINGS) -> bool:
+    inside = np.zeros(gray.shape, np.uint8)
+    cv2.fillPoly(inside, [quad.reshape(-1, 2).astype(np.int32)], 255)
+    band = max(3, int(min(gray.shape) * settings.paper_border_band_fraction))
+    grown = cv2.dilate(inside, np.ones((band, band), np.uint8))
+    outside = cv2.subtract(grown, inside)
+    if not outside.any():
+        return True
+    contrast = float(np.median(gray[inside > 0])) - float(np.median(gray[outside > 0]))
+    return contrast >= settings.min_paper_border_contrast
 
 
 def order_corners(points: np.ndarray) -> np.ndarray:

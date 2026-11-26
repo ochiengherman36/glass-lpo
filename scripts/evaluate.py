@@ -166,18 +166,52 @@ def score_panel(expected: dict, extracted: dict | None, row: dict | None, flags:
     return scores
 
 
-def score_overall(expected: dict, extraction: dict, flags: list[dict]) -> list[FieldScore]:
+def truth_items(truth: dict) -> list[tuple[str, dict]]:
+    if "items" in truth:
+        return [(item.get("item", f"item {index}"), item.get("overall", {})) for index, item in enumerate(truth["items"], 1)]
+    return [("drawing", truth.get("overall", {}))]
+
+
+def truth_panels(truth: dict) -> list[dict]:
+    if "items" in truth:
+        return [panel for item in truth["items"] for panel in item["panels"]]
+    return truth["panels"]
+
+
+def extracted_items(extraction: dict) -> list[tuple[str | None, dict | None, dict | None]]:
+    if extraction.get("items"):
+        return [(item["name"], item["overall_width_mm"], item["overall_height_mm"]) for item in extraction["items"]]
+    return [(None, extraction.get("overall_width_mm"), extraction.get("overall_height_mm"))]
+
+
+def score_overall(truth: dict, extraction: dict, flags: list[dict]) -> list[FieldScore]:
     scores = []
-    for field, key in (("overall_width_mm", "width_mm"), ("overall_height_mm", "height_mm")):
-        exp = expected.get("overall", {}).get(key)
-        got = reading(extraction.get(field))
-        label = "overall width" if key == "width_mm" else "overall height"
-        flagged = any(label in flag["message"].lower() for flag in flags)
-        scores.append(FieldScore("drawing", field, exp, got, flagged, outcome(same_number(exp, got), flagged)))
+    got_items = extracted_items(extraction)
+    for index, (label, overall) in enumerate(truth_items(truth)):
+        name, got_width, got_height = got_items[index] if index < len(got_items) else (None, None, None)
+        for field, key, got_reading in (("overall_width_mm", "width_mm", got_width),
+                                        ("overall_height_mm", "height_mm", got_height)):
+            exp = overall.get(key)
+            got = reading(got_reading)
+            phrase = "overall width" if key == "width_mm" else "overall height"
+            flagged = any(
+                phrase in flag["message"].lower() and (name is None or name.lower() in flag["message"].lower())
+                for flag in flags
+            )
+            result = CORRECT if exp is None and got is None else outcome(same_number(exp, got), flagged)
+            scores.append(FieldScore(label, field, exp, got, flagged, result))
     return scores
 
 
-def evaluate_folder(folder: Path) -> tuple[list[FieldScore], dict, dict] | None:
+def match_panels(expected: list[dict], extracted: list[dict]) -> tuple[list[int | None], str]:
+    ids = [panel["panel_id"].upper() for panel in extracted]
+    by_id = [ids.index(panel["panel_id"].upper()) if panel["panel_id"].upper() in ids else None for panel in expected]
+    if any(index is not None for index in by_id):
+        return by_id, "panel ID"
+    return [index if index < len(extracted) else None for index in range(len(expected))], "order (no matching IDs)"
+
+
+def evaluate_folder(folder: Path) -> tuple[list[FieldScore], dict, dict, str] | None:
     truth_files = sorted(folder.glob("ground-truth-*.json"))
     result_file = folder / RESULT_PATH
     if not truth_files or not result_file.is_file():
@@ -185,20 +219,26 @@ def evaluate_folder(folder: Path) -> tuple[list[FieldScore], dict, dict] | None:
 
     truth = json.loads(truth_files[0].read_text(encoding="utf-8"))
     result = json.loads(result_file.read_text(encoding="utf-8"))
-    extraction = result["extraction"]
-    extracted_by_id = {panel["panel_id"].upper(): panel for panel in extraction["panels"]}
-    rows_by_id = {str(row["Panel ID"]).upper(): row for row in result["panels"]}
+    extraction = result.get("normalized") or result["extraction"]
+    extracted = extraction["panels"]
+    rows = result["panels"]
+    expected = truth_panels(truth)
+    matches, matched_by = match_panels(expected, extracted)
 
     scores = score_overall(truth, extraction, result["flags"])
-    for panel in truth["panels"]:
-        key = panel["panel_id"].upper()
-        scores += score_panel(panel, extracted_by_id.get(key), rows_by_id.get(key), result["flags"])
+    for panel, index in zip(expected, matches, strict=True):
+        got_panel, row = (extracted[index], rows[index]) if index is not None else (None, None)
+        flags = result["flags"]
+        if index is not None and got_panel["panel_id"].upper() != panel["panel_id"].upper():
+            flags = [{**flag, "panel_id": panel["panel_id"]} if flag.get("panel_id") == got_panel["panel_id"] else flag
+                     for flag in flags]
+        scores += score_panel(panel, got_panel, row, flags)
 
-    expected_ids = {panel["panel_id"].upper() for panel in truth["panels"]}
-    for extra in sorted(set(extracted_by_id) - expected_ids):
-        flagged = rows_by_id.get(extra, {}).get("Needs check (Y/N)") == "Y"
-        scores.append(FieldScore(extra, "panel", "absent", "extra panel", flagged, outcome(False, flagged)))
-    return scores, truth, result
+    for extra in sorted(set(range(len(extracted))) - {index for index in matches if index is not None}):
+        flagged = rows[extra].get("Needs check (Y/N)") == "Y"
+        scores.append(FieldScore(extracted[extra]["panel_id"], "panel", "absent", "extra panel", flagged,
+                                 outcome(False, flagged)))
+    return scores, truth, result, matched_by
 
 
 def summary(scores: list[FieldScore]) -> Counter:
@@ -246,13 +286,13 @@ def fmt(value: Any) -> str:
     return "-" if value is None or value == [] else str(value)
 
 
-def report(folder: Path, scores: list[FieldScore], truth: dict, result: dict) -> str:
+def report(folder: Path, scores: list[FieldScore], truth: dict, result: dict, matched_by: str) -> str:
     lines = [f"## {folder.name} ({truth.get('drawing_id', '')})", "", accuracy_line(summary(scores)), ""]
     lines += group_lines(scores) + [""]
     usage = result.get("usage", {})
     lines.append(
         f"Model `{usage.get('model')}`, {usage.get('input_tokens')} input / {usage.get('output_tokens')} output tokens. "
-        f"LPO `{result['lpo_no']}`."
+        f"LPO `{result['lpo_no']}`. Panels matched by {matched_by}."
     )
     lines += ["", "| Panel | Field | Expected | Got | Flagged | Outcome |", "|---|---|---|---|---|---|"]
     for score in scores:
@@ -284,9 +324,9 @@ def main(argv: list[str] | None = None) -> int:
         if evaluated is None:
             print(f"Skipping {folder}: needs ground-truth-*.json and {RESULT_PATH}", file=sys.stderr)
             continue
-        scores, truth, result = evaluated
+        scores, truth, result, matched_by = evaluated
         all_scores += scores
-        sections.append(report(folder, scores, truth, result))
+        sections.append(report(folder, scores, truth, result, matched_by))
 
     if not sections:
         print("Nothing to evaluate.", file=sys.stderr)

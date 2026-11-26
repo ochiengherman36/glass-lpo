@@ -25,7 +25,8 @@ Rules:
 1. Transcribe only what is written. Never calculate, estimate, measure from the sketch or infer a \
 number that is not written. Do not derive a panel width by subtracting from the overall width, and \
 do not estimate a hole position from where the circle is drawn. The only arithmetic allowed is the \
-hole-position conversion in rule 6.
+hole-position conversion in rule 6 and writing fractions as decimals in rule 4. Never convert units: \
+the system converts to millimetres itself.
 2. For every value set status:
    - clear: written and unambiguous.
    - unclear: written but smudged, ambiguous (5 or 6, 1 or 7), corrected or partly unreadable. Set \
@@ -39,8 +40,15 @@ covers and mention the note in that panel's notes. Likewise, a single height dim
 one row of side-by-side panels is the height of every panel in that row, and a single width \
 dimension beside one column of stacked panels is the width of every panel in that column: apply it \
 to each of those panels and say so in their notes.
-4. Units are millimetres unless the drawing says otherwise. 'Ø25', 'Q25' or 'O25' next to a \
-circle means a hole of 25 mm diameter.
+4. Units: drawings may mix millimetres, centimetres, metres, feet and inches. Give value in the \
+unit it is written in and set unit to what is written next to it: mm, cm, m, in (inch, \") or ft \
+(feet, '). '2.95m' is value 2.95, unit m; '4 feet' is value 4, unit ft. \
+Write fractions as decimals ('107 7/8' is 107.875). For feet and inches together (7' 6\") give the \
+total in inches (90, unit in). Copy the full text, unit included, into raw_text. If no unit is \
+written next to a value, set unit to null and do not guess; a unit stated for the whole drawing goes \
+in drawing_unit. If part of a number is missing (for example only a fraction such as '1/4' is \
+written), status is unclear. 'O/A' after a number means overall, not a fraction. 'Ø25', 'Q25' or \
+'O25' next to a circle means a hole of 25 mm diameter.
 5. One record per glass panel. Use the panel labels written on the drawing. If panels are \
 unlabelled, name them P1, P2... left to right, top to bottom, and say so in notes.
 6. One hole entry per circle drawn. x_mm is the distance from the panel's left edge to the hole \
@@ -60,6 +68,17 @@ not repeat a value you already marked unclear on a panel.
 10. Stains, rings, smudges and scribbles are not holes, notches or dimensions: ignore them. Copy \
 handwritten notes that are not about the glass itself (for example delivery or contact notes) into \
 general_notes.
+11. If the sheet shows more than one separate item (for example a pair of doors and a separate \
+window), add one entry per item to items with its overall size as written, set each panel's item \
+to that item's name, and set overall_width_mm and overall_height_mm to not_shown. For a single item \
+leave items empty and item null.
+12. Only glass is ordered. A part marked as another material (aluminium, timber, solid panel) is not \
+a glass panel: leave it out of panels and mention it in general_notes. A door, window or frame size \
+is not a glass size: when a pane's own size is not written, its width and height are not_shown, even \
+if the door or frame around it is dimensioned. Joinery details (frame sections, beads, hinges, \
+scale notes) go in general_notes, not in panels.
+13. A number written next to an item's name, often circled (for example '(2) Windows'), is the \
+quantity of that item: apply it to the item's panels. A crossed-out word is not a label.
 """
 
 USER_INSTRUCTIONS = """\

@@ -297,11 +297,22 @@ def validate_drawing(extraction: DrawingExtraction, rules: ValidationRules = DEF
     if not lines:
         drawing_flags.append(Flag(None, "panels", "No glass panels found on the drawing", "critical"))
 
-    overall_width = overall_value(extraction.overall_width_mm, "overall width", drawing_flags)
-    overall_height = overall_value(extraction.overall_height_mm, "overall height", drawing_flags)
-
-    check_sum(extraction.panels, lines, "width", overall_width, rules, drawing_flags)
-    check_sum(extraction.panels, lines, "height", overall_height, rules, drawing_flags)
+    if extraction.items:
+        overall_width = overall_height = None
+        for item in extraction.items:
+            name = item.name.strip().lower()
+            members = [index for index, panel in enumerate(extraction.panels) if (panel.item or "").strip().lower() == name]
+            item_panels = [extraction.panels[index] for index in members]
+            item_lines = [lines[index] for index in members]
+            width = overall_value(item.overall_width_mm, f"{item.name} overall width", drawing_flags)
+            height = overall_value(item.overall_height_mm, f"{item.name} overall height", drawing_flags)
+            check_sum(item_panels, item_lines, "width", width, rules, drawing_flags, item.name)
+            check_sum(item_panels, item_lines, "height", height, rules, drawing_flags, item.name)
+    else:
+        overall_width = overall_value(extraction.overall_width_mm, "overall width", drawing_flags)
+        overall_height = overall_value(extraction.overall_height_mm, "overall height", drawing_flags)
+        check_sum(extraction.panels, lines, "width", overall_width, rules, drawing_flags)
+        check_sum(extraction.panels, lines, "height", overall_height, rules, drawing_flags)
     check_stated_hole_count(extraction, drawing_flags)
 
     for item in extraction.unreadable_items:
@@ -332,6 +343,7 @@ def check_sum(
     overall: float | None,
     rules: ValidationRules,
     flags: list[Flag],
+    item_name: str | None = None,
 ) -> None:
     readings = [panel.width_mm if dimension == "width" else panel.height_mm for panel in panels]
     if overall is None or not readings or not all(is_known(reading) for reading in readings):
@@ -345,8 +357,9 @@ def check_sum(
     if adds_up or each_spans_overall:
         return
 
+    scope = f"{item_name}: p" if item_name else "P"
     flags.append(
-        Flag(None, dimension, f"Panel {dimension}s add up to {mm(total)} mm but the overall {dimension} is {mm(overall)} mm", "critical")
+        Flag(None, dimension, f"{scope}anel {dimension}s add up to {mm(total)} mm but the overall {dimension} is {mm(overall)} mm", "critical")
     )
     for line in lines:
         line.check_fields.add(dimension)

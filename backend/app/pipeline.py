@@ -14,6 +14,7 @@ from app.extract import ExtractionResult, extract_drawing
 from app.lpo import COLUMNS, LpoDocument, generate_lpo_number, rows
 from app.pdf_lpo import write_pdf
 from app.schema import DrawingExtraction
+from app.units import normalize_units
 from app.validate import ValidatedDrawing, validate_drawing
 
 logger = logging.getLogger(__name__)
@@ -48,6 +49,7 @@ class PipelineResult:
     document: LpoDocument
     enhancement: EnhanceResult
     extraction: ExtractionResult
+    normalized: DrawingExtraction
     excel_path: Path
     pdf_path: Path
     result_path: Path
@@ -90,6 +92,7 @@ class PipelineResult:
             "usage": self.extraction.usage,
             "files": {name: path.name for name, path in self.files.items()},
             "extraction": self.extraction.drawing.model_dump(mode="json"),
+            "normalized": self.normalized.model_dump(mode="json"),
         }
 
 
@@ -107,17 +110,19 @@ def run(
     enhancement = enhance_image(image, out_dir)
     extraction = extractor(enhancement.claude_enhanced_path, enhancement.claude_original_path)
 
+    normalized = normalize_units(extraction.drawing)
     lpo_no = generate_lpo_number(issued_at)
     document = LpoDocument(
         lpo_no=lpo_no,
         issued_at=issued_at,
         source_name=source_name,
-        drawing=validate_drawing(extraction.drawing),
+        drawing=validate_drawing(normalized),
     )
     result = PipelineResult(
         document=document,
         enhancement=enhancement,
         extraction=extraction,
+        normalized=normalized,
         excel_path=write_excel(document, out_dir / f"{lpo_no}.xlsx"),
         pdf_path=write_pdf(document, out_dir / f"{lpo_no}.pdf"),
         result_path=out_dir / RESULT_FILE,

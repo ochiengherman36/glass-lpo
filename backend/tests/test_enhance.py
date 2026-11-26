@@ -36,6 +36,17 @@ def test_perspective_is_corrected_when_paper_edges_are_visible(paper_photo_path,
     assert width / height == pytest.approx(800 / 1000, rel=0.1)
 
 
+def test_a_large_rectangle_drawn_on_the_page_is_not_mistaken_for_the_paper_edge(tmp_path):
+    page = np.full((1000, 1400, 3), 245, np.uint8)
+    cv2.rectangle(page, (150, 120), (1250, 880), (30, 30, 30), 4)
+    cv2.putText(page, "107 7/8", (550, 960), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (30, 30, 30), 3)
+
+    result = enhance_image(encode_jpeg(page), tmp_path)
+
+    assert not result.perspective_corrected
+    assert "perspective: no paper edge found, skipped" in result.steps_applied
+
+
 def test_falls_back_to_deskew_when_there_is_no_paper_edge(skewed_page_bytes, tmp_path):
     result = enhance_image(skewed_page_bytes, tmp_path)
 
