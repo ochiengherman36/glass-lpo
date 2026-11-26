@@ -1,6 +1,6 @@
 {
-  "lpo_no": "LPO-20261126-225730",
-  "issued_at": "2026-11-26T22:57:30",
+  "lpo_no": "LPO-20261126-231342",
+  "issued_at": "2026-11-26T23:13:42",
   "source_name": "sd42teinfr7f1.jpeg",
   "needs_check": true,
   "steps_applied": [
@@ -31,7 +31,7 @@
   ],
   "panels": [
     {
-      "LPO No": "LPO-20261126-225730",
+      "LPO No": "LPO-20261126-231342",
       "Line": 1,
       "Panel ID": "P1",
       "Width (mm)": "CHECK (2740?)",
@@ -132,10 +132,10 @@
     "fallback_used": false
   },
   "files": {
-    "original": "original.jpg",
-    "enhanced": "enhanced.jpg",
-    "xlsx": "LPO-20261126-225730.xlsx",
-    "pdf": "LPO-20261126-225730.pdf",
+    "original": "sd42teinfr7f1-original.jpg",
+    "enhanced": "sd42teinfr7f1-enhanced.jpg",
+    "xlsx": "LPO-20261126-231342.xlsx",
+    "pdf": "LPO-20261126-231342.pdf",
     "json": "result.json"
   },
   "extraction": {

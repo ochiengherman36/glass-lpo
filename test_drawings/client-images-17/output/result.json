@@ -1,6 +1,6 @@
 {
-  "lpo_no": "LPO-20261126-225642",
-  "issued_at": "2026-11-26T22:56:42",
+  "lpo_no": "LPO-20261126-231329",
+  "issued_at": "2026-11-26T23:13:29",
   "source_name": "images 17.jpg",
   "needs_check": true,
   "steps_applied": [
@@ -31,7 +31,7 @@
   ],
   "panels": [
     {
-      "LPO No": "LPO-20261126-225642",
+      "LPO No": "LPO-20261126-231329",
       "Line": 1,
       "Panel ID": "P1",
       "Width (mm)": 610,
@@ -50,7 +50,7 @@
       "Needs check (Y/N)": "Y"
     },
     {
-      "LPO No": "LPO-20261126-225642",
+      "LPO No": "LPO-20261126-231329",
       "Line": 2,
       "Panel ID": "P2",
       "Width (mm)": 610,
@@ -69,7 +69,7 @@
       "Needs check (Y/N)": "Y"
     },
     {
-      "LPO No": "LPO-20261126-225642",
+      "LPO No": "LPO-20261126-231329",
       "Line": 3,
       "Panel ID": "P3",
       "Width (mm)": "CHECK",
@@ -158,10 +158,10 @@
     "fallback_used": false
   },
   "files": {
-    "original": "original.jpg",
-    "enhanced": "enhanced.jpg",
-    "xlsx": "LPO-20261126-225642.xlsx",
-    "pdf": "LPO-20261126-225642.pdf",
+    "original": "images-17-original.jpg",
+    "enhanced": "images-17-enhanced.jpg",
+    "xlsx": "LPO-20261126-231329.xlsx",
+    "pdf": "LPO-20261126-231329.pdf",
     "json": "result.json"
   },
   "extraction": {
