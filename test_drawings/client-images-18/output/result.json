@@ -1,0 +1,404 @@
+{
+  "lpo_no": "LPO-20261126-225707",
+  "issued_at": "2026-11-26T22:57:07",
+  "source_name": "images 18.jpg",
+  "needs_check": true,
+  "steps_applied": [
+    "perspective: no paper edge found, skipped",
+    "deskew: page within 3 deg of straight (-0.3 deg), left as is",
+    "removed shadows and uneven lighting, boosted contrast (CLAHE)",
+    "denoised and sharpened",
+    "upscaled x2.00"
+  ],
+  "columns": [
+    "LPO No",
+    "Line",
+    "Panel ID",
+    "Width (mm)",
+    "Height (mm)",
+    "Qty",
+    "Thickness (mm)",
+    "Glass type",
+    "Area (m²)",
+    "Hole count",
+    "Hole diameters (mm)",
+    "Hole positions",
+    "Notches/offcuts",
+    "Grooves/edge work",
+    "Notes",
+    "Confidence",
+    "Needs check (Y/N)"
+  ],
+  "panels": [
+    {
+      "LPO No": "LPO-20261126-225707",
+      "Line": 1,
+      "Panel ID": "P1",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": "CHECK (14?)",
+      "Glass type": "14mm unit",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Upper glazed panel of the left door. Unlabelled, so named P1 (left to right). Glass size is not written; the door sizes shown are not glass sizes. A 'BEVEL' label is on the drawing but appears to refer to the timber frame, so no glass edge work is recorded; width not written on drawing; height not written on drawing; quantity not written, assumed 1; thickness 14 mm is not a standard glass thickness (4, 5, 6, 8, 10, 12, 15, 19)",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-225707",
+      "Line": 2,
+      "Panel ID": "P2",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": "CHECK (14?)",
+      "Glass type": "14mm unit",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Upper glazed panel of the right door. Unlabelled, so named P2 (left to right). Glass size is not written; the door sizes shown are not glass sizes. A 'BEVEL' label is on the drawing but appears to refer to the timber frame, so no glass edge work is recorded; width not written on drawing; height not written on drawing; quantity not written, assumed 1; thickness 14 mm is not a standard glass thickness (4, 5, 6, 8, 10, 12, 15, 19)",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    }
+  ],
+  "flags": [
+    {
+      "panel_id": null,
+      "field": "overall width",
+      "message": "Overall width unclear (raw: 'bottom: 1187 O/A; top: '1?||?0|' with '12' below, unreadable and may disagree with the bottom figure')",
+      "severity": "minor"
+    },
+    {
+      "panel_id": null,
+      "field": "drawing",
+      "message": "Unreadable on drawing: Top overall width dimension, reads like '1?||?0|' with '12' below",
+      "severity": "minor"
+    },
+    {
+      "panel_id": null,
+      "field": "drawing",
+      "message": "Unreadable on drawing: Small number under 'DRIP' at the bottom of the side section, reads like '14?'",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "width",
+      "message": "P1: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "height",
+      "message": "P1: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "qty",
+      "message": "P1: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "thickness",
+      "message": "P1: thickness 14 mm is not a standard glass thickness (4, 5, 6, 8, 10, 12, 15, 19)",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "width",
+      "message": "P2: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "height",
+      "message": "P2: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "qty",
+      "message": "P2: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "thickness",
+      "message": "P2: thickness 14 mm is not a standard glass thickness (4, 5, 6, 8, 10, 12, 15, 19)",
+      "severity": "minor"
+    }
+  ],
+  "totals": {
+    "lines": 2,
+    "pieces": 2,
+    "area_m2": 0,
+    "area_complete": false,
+    "holes": 0
+  },
+  "usage": {
+    "model": "claude-sonnet-5-5",
+    "input_tokens": 6537,
+    "output_tokens": 2069,
+    "fallback_used": false
+  },
+  "files": {
+    "original": "original.jpg",
+    "enhanced": "enhanced.jpg",
+    "xlsx": "LPO-20261126-225707.xlsx",
+    "pdf": "LPO-20261126-225707.pdf",
+    "json": "result.json"
+  },
+  "extraction": {
+    "drawing_unit": null,
+    "items": [],
+    "overall_width_mm": {
+      "value": null,
+      "unit": null,
+      "status": "unclear",
+      "raw_text": "bottom: 1187 O/A; top: '1?||?0|' with '12' below, unreadable and may disagree with the bottom figure"
+    },
+    "overall_height_mm": {
+      "value": 2050.0,
+      "unit": null,
+      "status": "clear",
+      "raw_text": "2050 O/A"
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": 14.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "14mm UNIT"
+        },
+        "glass_type": {
+          "text": "14mm unit",
+          "status": "clear"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Upper glazed panel of the left door. Unlabelled, so named P1 (left to right). Glass size is not written; the door sizes shown are not glass sizes. A 'BEVEL' label is on the drawing but appears to refer to the timber frame, so no glass edge work is recorded.",
+        "confidence": "low",
+        "confidence_reason": "Glass width, height and quantity are not written on the drawing."
+      },
+      {
+        "panel_id": "P2",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": 14.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "14mm UNIT"
+        },
+        "glass_type": {
+          "text": "14mm unit",
+          "status": "clear"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Upper glazed panel of the right door. Unlabelled, so named P2 (left to right). Glass size is not written; the door sizes shown are not glass sizes. A 'BEVEL' label is on the drawing but appears to refer to the timber frame, so no glass edge work is recorded.",
+        "confidence": "low",
+        "confidence_reason": "Glass width, height and quantity are not written on the drawing."
+      }
+    ],
+    "general_notes": [
+      "SOLID EUROPEAN OAK",
+      "WEDGE MORTICE + TENON JOINTS",
+      "SCALE 1:1",
+      "Pair of timber doors, glazed in the upper part with 14mm unit",
+      "Frame sections 90x70 (head and jambs) and 90x70 (side section)",
+      "Lower panels are timber, marked 'BEAD + BUTT', so not glass",
+      "'BEVEL' labels with arrows on the door stiles",
+      "Vertical dimensions on the left: 90 (top), 170, 700, 200; overall 2050 O/A",
+      "Bottom dimensions: 90 | 90 x 90 | 90 (partly legible), overall 1187 O/A",
+      "Side section: 70, 140 DRIP, 'WALL' shown at the head detail"
+    ],
+    "unreadable_items": [
+      "Top overall width dimension, reads like '1?||?0|' with '12' below",
+      "Small number under 'DRIP' at the bottom of the side section, reads like '14?'"
+    ]
+  },
+  "normalized": {
+    "drawing_unit": "mm",
+    "items": [],
+    "overall_width_mm": {
+      "value": null,
+      "unit": "mm",
+      "status": "unclear",
+      "raw_text": "bottom: 1187 O/A; top: '1?||?0|' with '12' below, unreadable and may disagree with the bottom figure"
+    },
+    "overall_height_mm": {
+      "value": 2050.0,
+      "unit": "mm",
+      "status": "clear",
+      "raw_text": "2050 O/A"
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": 14.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "14mm UNIT"
+        },
+        "glass_type": {
+          "text": "14mm unit",
+          "status": "clear"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Upper glazed panel of the left door. Unlabelled, so named P1 (left to right). Glass size is not written; the door sizes shown are not glass sizes. A 'BEVEL' label is on the drawing but appears to refer to the timber frame, so no glass edge work is recorded",
+        "confidence": "low",
+        "confidence_reason": "Glass width, height and quantity are not written on the drawing."
+      },
+      {
+        "panel_id": "P2",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": 14.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "14mm UNIT"
+        },
+        "glass_type": {
+          "text": "14mm unit",
+          "status": "clear"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Upper glazed panel of the right door. Unlabelled, so named P2 (left to right). Glass size is not written; the door sizes shown are not glass sizes. A 'BEVEL' label is on the drawing but appears to refer to the timber frame, so no glass edge work is recorded",
+        "confidence": "low",
+        "confidence_reason": "Glass width, height and quantity are not written on the drawing."
+      }
+    ],
+    "general_notes": [
+      "SOLID EUROPEAN OAK",
+      "WEDGE MORTICE + TENON JOINTS",
+      "SCALE 1:1",
+      "Pair of timber doors, glazed in the upper part with 14mm unit",
+      "Frame sections 90x70 (head and jambs) and 90x70 (side section)",
+      "Lower panels are timber, marked 'BEAD + BUTT', so not glass",
+      "'BEVEL' labels with arrows on the door stiles",
+      "Vertical dimensions on the left: 90 (top), 170, 700, 200; overall 2050 O/A",
+      "Bottom dimensions: 90 | 90 x 90 | 90 (partly legible), overall 1187 O/A",
+      "Side section: 70, 140 DRIP, 'WALL' shown at the head detail"
+    ],
+    "unreadable_items": [
+      "Top overall width dimension, reads like '1?||?0|' with '12' below",
+      "Small number under 'DRIP' at the bottom of the side section, reads like '14?'"
+    ]
+  }
+}

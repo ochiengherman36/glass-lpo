@@ -1,0 +1,531 @@
+{
+  "lpo_no": "LPO-20261126-225613",
+  "issued_at": "2026-11-26T22:56:13",
+  "source_name": "images 16.jpg",
+  "needs_check": true,
+  "steps_applied": [
+    "perspective: no paper edge found, skipped",
+    "deskew: no consistent straight lines (curved page or too few lines), skipped",
+    "removed shadows and uneven lighting, boosted contrast (CLAHE)",
+    "denoised and sharpened",
+    "upscaled x2.00"
+  ],
+  "columns": [
+    "LPO No",
+    "Line",
+    "Panel ID",
+    "Width (mm)",
+    "Height (mm)",
+    "Qty",
+    "Thickness (mm)",
+    "Glass type",
+    "Area (m²)",
+    "Hole count",
+    "Hole diameters (mm)",
+    "Hole positions",
+    "Notches/offcuts",
+    "Grooves/edge work",
+    "Notes",
+    "Confidence",
+    "Needs check (Y/N)"
+  ],
+  "panels": [
+    {
+      "LPO No": "LPO-20261126-225613",
+      "Line": 1,
+      "Panel ID": "P1",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": 12,
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: doors. Unlabelled, named P1 (left door leaf). 12mm, 2 doors written inside the door frame. The 2.95m x 2.4m dimensions belong to the whole door frame, not the individual glass leaf, so the leaf size is not shown; width not written on drawing; height not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-225613",
+      "Line": 2,
+      "Panel ID": "P2",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": 12,
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: doors. Unlabelled, named P2 (right door leaf). 12mm, 2 doors written inside the door frame. The 2.95m x 2.4m dimensions belong to the whole door frame, not the individual glass leaf, so the leaf size is not shown; width not written on drawing; height not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-225613",
+      "Line": 3,
+      "Panel ID": "P3",
+      "Width (mm)": 750,
+      "Height (mm)": 970,
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": 0.728,
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: sliding window. Unlabelled, named P3. Labelled 'sliding window'. The 12mm note is written inside the door drawing and is not applied to the window. converted to mm from width '75cm', height '97cm'; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    }
+  ],
+  "flags": [
+    {
+      "panel_id": "P1",
+      "field": "width",
+      "message": "P1: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "height",
+      "message": "P1: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "glass_type",
+      "message": "P1: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "width",
+      "message": "P2: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "height",
+      "message": "P2: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "glass_type",
+      "message": "P2: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "qty",
+      "message": "P3: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "thickness",
+      "message": "P3: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "glass_type",
+      "message": "P3: glass type not written on drawing",
+      "severity": "minor"
+    }
+  ],
+  "totals": {
+    "lines": 3,
+    "pieces": 3,
+    "area_m2": 0.728,
+    "area_complete": false,
+    "holes": 0
+  },
+  "usage": {
+    "model": "claude-sonnet-5-5",
+    "input_tokens": 7174,
+    "output_tokens": 2288,
+    "fallback_used": false
+  },
+  "files": {
+    "original": "original.jpg",
+    "enhanced": "enhanced.jpg",
+    "xlsx": "LPO-20261126-225613.xlsx",
+    "pdf": "LPO-20261126-225613.pdf",
+    "json": "result.json"
+  },
+  "extraction": {
+    "drawing_unit": null,
+    "items": [
+      {
+        "name": "doors",
+        "overall_width_mm": {
+          "value": 2.95,
+          "unit": "m",
+          "status": "clear",
+          "raw_text": "2.95m"
+        },
+        "overall_height_mm": {
+          "value": 2.4,
+          "unit": "m",
+          "status": "clear",
+          "raw_text": "2.4m"
+        }
+      },
+      {
+        "name": "sliding window",
+        "overall_width_mm": {
+          "value": 75.0,
+          "unit": "cm",
+          "status": "clear",
+          "raw_text": "75cm"
+        },
+        "overall_height_mm": {
+          "value": 97.0,
+          "unit": "cm",
+          "status": "clear",
+          "raw_text": "97cm"
+        }
+      }
+    ],
+    "overall_width_mm": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "overall_height_mm": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": "doors",
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": 1.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "2 doors (two door panels drawn)"
+        },
+        "thickness_mm": {
+          "value": 12.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "12mm"
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled, named P1 (left door leaf). 12mm, 2 doors written inside the door frame. The 2.95m x 2.4m dimensions belong to the whole door frame, not the individual glass leaf, so the leaf size is not shown.",
+        "confidence": "low",
+        "confidence_reason": "Width and height of this door leaf are not written on the drawing."
+      },
+      {
+        "panel_id": "P2",
+        "item": "doors",
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": 1.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "2 doors (two door panels drawn)"
+        },
+        "thickness_mm": {
+          "value": 12.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "12mm"
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled, named P2 (right door leaf). 12mm, 2 doors written inside the door frame. The 2.95m x 2.4m dimensions belong to the whole door frame, not the individual glass leaf, so the leaf size is not shown.",
+        "confidence": "low",
+        "confidence_reason": "Width and height of this door leaf are not written on the drawing."
+      },
+      {
+        "panel_id": "P3",
+        "item": "sliding window",
+        "width_mm": {
+          "value": 75.0,
+          "unit": "cm",
+          "status": "clear",
+          "raw_text": "75cm"
+        },
+        "height_mm": {
+          "value": 97.0,
+          "unit": "cm",
+          "status": "clear",
+          "raw_text": "97cm"
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled, named P3. Labelled 'sliding window'. The 12mm note is written inside the door drawing and is not applied to the window.",
+        "confidence": "low",
+        "confidence_reason": "Quantity is not shown, and thickness is not written for the window."
+      }
+    ],
+    "general_notes": [
+      "12mm, 2 doors"
+    ],
+    "unreadable_items": []
+  },
+  "normalized": {
+    "drawing_unit": "mm",
+    "items": [
+      {
+        "name": "doors",
+        "overall_width_mm": {
+          "value": 2950.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "2.95m"
+        },
+        "overall_height_mm": {
+          "value": 2400.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "2.4m"
+        }
+      },
+      {
+        "name": "sliding window",
+        "overall_width_mm": {
+          "value": 750.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "75cm"
+        },
+        "overall_height_mm": {
+          "value": 970.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "97cm"
+        }
+      }
+    ],
+    "overall_width_mm": {
+      "value": null,
+      "unit": "mm",
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "overall_height_mm": {
+      "value": null,
+      "unit": "mm",
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": "doors",
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": 1.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "2 doors (two door panels drawn)"
+        },
+        "thickness_mm": {
+          "value": 12.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "12mm"
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: doors. Unlabelled, named P1 (left door leaf). 12mm, 2 doors written inside the door frame. The 2.95m x 2.4m dimensions belong to the whole door frame, not the individual glass leaf, so the leaf size is not shown",
+        "confidence": "low",
+        "confidence_reason": "Width and height of this door leaf are not written on the drawing."
+      },
+      {
+        "panel_id": "P2",
+        "item": "doors",
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": 1.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "2 doors (two door panels drawn)"
+        },
+        "thickness_mm": {
+          "value": 12.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "12mm"
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: doors. Unlabelled, named P2 (right door leaf). 12mm, 2 doors written inside the door frame. The 2.95m x 2.4m dimensions belong to the whole door frame, not the individual glass leaf, so the leaf size is not shown",
+        "confidence": "low",
+        "confidence_reason": "Width and height of this door leaf are not written on the drawing."
+      },
+      {
+        "panel_id": "P3",
+        "item": "sliding window",
+        "width_mm": {
+          "value": 750.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "75cm"
+        },
+        "height_mm": {
+          "value": 970.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "97cm"
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: sliding window. Unlabelled, named P3. Labelled 'sliding window'. The 12mm note is written inside the door drawing and is not applied to the window. converted to mm from width '75cm', height '97cm'",
+        "confidence": "low",
+        "confidence_reason": "Quantity is not shown, and thickness is not written for the window."
+      }
+    ],
+    "general_notes": [
+      "12mm, 2 doors"
+    ],
+    "unreadable_items": []
+  }
+}

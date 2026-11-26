@@ -1,0 +1,537 @@
+{
+  "lpo_no": "LPO-20261126-225642",
+  "issued_at": "2026-11-26T22:56:42",
+  "source_name": "images 17.jpg",
+  "needs_check": true,
+  "steps_applied": [
+    "perspective: no paper edge found, skipped",
+    "deskew: no consistent straight lines (curved page or too few lines), skipped",
+    "removed shadows and uneven lighting, boosted contrast (CLAHE)",
+    "denoised and sharpened",
+    "upscaled x2.00"
+  ],
+  "columns": [
+    "LPO No",
+    "Line",
+    "Panel ID",
+    "Width (mm)",
+    "Height (mm)",
+    "Qty",
+    "Thickness (mm)",
+    "Glass type",
+    "Area (m²)",
+    "Hole count",
+    "Hole diameters (mm)",
+    "Hole positions",
+    "Notches/offcuts",
+    "Grooves/edge work",
+    "Notes",
+    "Confidence",
+    "Needs check (Y/N)"
+  ],
+  "panels": [
+    {
+      "LPO No": "LPO-20261126-225642",
+      "Line": 1,
+      "Panel ID": "P1",
+      "Width (mm)": 610,
+      "Height (mm)": 1219,
+      "Qty": 2,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": 1.487,
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: Windows. Unlabelled, named P1 (left pane of window). Width 2 ft written under this pane. Height 4 feet is the single dimension beside the row of panes, applied to both. Quantity 2 from the circled number next to 'Windows'. converted to mm from width '2 ft', height '4 feet'; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Medium",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-225642",
+      "Line": 2,
+      "Panel ID": "P2",
+      "Width (mm)": 610,
+      "Height (mm)": 1219,
+      "Qty": 2,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": 1.487,
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: Windows. Unlabelled, named P2 (right pane of window). Width 2 ft written under this pane. Height 4 feet is the single dimension beside the row of panes, applied to both. Quantity 2 from the circled number next to 'Windows'. converted to mm from width '2 ft', height '4 feet'; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Medium",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-225642",
+      "Line": 3,
+      "Panel ID": "P3",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: Doors. Unlabelled, named P3: the upper glass pane of the door, marked 'glass'. Only the overall door size is written, not the glass size, so width and height are not shown. Quantity 1 from the circled number next to 'Doors'; width not written on drawing; height not written on drawing; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    }
+  ],
+  "flags": [
+    {
+      "panel_id": null,
+      "field": "Doors overall height",
+      "message": "Doors overall height unclear (raw: '?feet (first digit unclear, possibly 5 or 6)')",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "thickness",
+      "message": "P1: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "glass_type",
+      "message": "P1: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "thickness",
+      "message": "P2: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "glass_type",
+      "message": "P2: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "width",
+      "message": "P3: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P3",
+      "field": "height",
+      "message": "P3: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P3",
+      "field": "thickness",
+      "message": "P3: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "glass_type",
+      "message": "P3: glass type not written on drawing",
+      "severity": "minor"
+    }
+  ],
+  "totals": {
+    "lines": 3,
+    "pieces": 5,
+    "area_m2": 2.974,
+    "area_complete": false,
+    "holes": 0
+  },
+  "usage": {
+    "model": "claude-sonnet-5-5",
+    "input_tokens": 6481,
+    "output_tokens": 2682,
+    "fallback_used": false
+  },
+  "files": {
+    "original": "original.jpg",
+    "enhanced": "enhanced.jpg",
+    "xlsx": "LPO-20261126-225642.xlsx",
+    "pdf": "LPO-20261126-225642.pdf",
+    "json": "result.json"
+  },
+  "extraction": {
+    "drawing_unit": null,
+    "items": [
+      {
+        "name": "Windows",
+        "overall_width_mm": {
+          "value": 4.0,
+          "unit": "ft",
+          "status": "clear",
+          "raw_text": "4 feet"
+        },
+        "overall_height_mm": {
+          "value": 4.0,
+          "unit": "ft",
+          "status": "clear",
+          "raw_text": "4 feet"
+        }
+      },
+      {
+        "name": "Doors",
+        "overall_width_mm": {
+          "value": 3.5,
+          "unit": "ft",
+          "status": "clear",
+          "raw_text": "3.5 feet"
+        },
+        "overall_height_mm": {
+          "value": null,
+          "unit": "ft",
+          "status": "unclear",
+          "raw_text": "?feet (first digit unclear, possibly 5 or 6)"
+        }
+      }
+    ],
+    "overall_width_mm": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "overall_height_mm": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": "Windows",
+        "width_mm": {
+          "value": 2.0,
+          "unit": "ft",
+          "status": "clear",
+          "raw_text": "2 ft"
+        },
+        "height_mm": {
+          "value": 4.0,
+          "unit": "ft",
+          "status": "clear",
+          "raw_text": "4 feet"
+        },
+        "qty": {
+          "value": 2.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "(2) Windows"
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled, named P1 (left pane of window). Width 2 ft written under this pane. Height 4 feet is the single dimension beside the row of panes, applied to both. Quantity 2 from the circled number next to 'Windows'.",
+        "confidence": "high",
+        "confidence_reason": "Width, height and quantity are all clearly written; thickness, glass type and edge work are not shown but are not secondary readings that are unclear."
+      },
+      {
+        "panel_id": "P2",
+        "item": "Windows",
+        "width_mm": {
+          "value": 2.0,
+          "unit": "ft",
+          "status": "clear",
+          "raw_text": "2 ft"
+        },
+        "height_mm": {
+          "value": 4.0,
+          "unit": "ft",
+          "status": "clear",
+          "raw_text": "4 feet"
+        },
+        "qty": {
+          "value": 2.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "(2) Windows"
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled, named P2 (right pane of window). Width 2 ft written under this pane. Height 4 feet is the single dimension beside the row of panes, applied to both. Quantity 2 from the circled number next to 'Windows'.",
+        "confidence": "high",
+        "confidence_reason": "Width, height and quantity are all clearly written; thickness, glass type and edge work are not shown."
+      },
+      {
+        "panel_id": "P3",
+        "item": "Doors",
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": 1.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "(1) Doors"
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled, named P3: the upper glass pane of the door, marked 'glass'. Only the overall door size is written, not the glass size, so width and height are not shown. Quantity 1 from the circled number next to 'Doors'.",
+        "confidence": "low",
+        "confidence_reason": "The glass pane's own width and height are not written; only the door's overall size is given."
+      }
+    ],
+    "general_notes": [
+      "Lower part of the door is marked 'Alumin' (aluminium): not glass, excluded from panels.",
+      "Windows: overall 4 feet wide by 4 feet high, with bottom dimensions 2 ft, 4 feet, 2 ft.",
+      "Door: overall 3.5 feet wide; height written at right is unclear.",
+      "Crossed-out words above each sketch are not labels."
+    ],
+    "unreadable_items": []
+  },
+  "normalized": {
+    "drawing_unit": "mm",
+    "items": [
+      {
+        "name": "Windows",
+        "overall_width_mm": {
+          "value": 1219.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "4 feet"
+        },
+        "overall_height_mm": {
+          "value": 1219.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "4 feet"
+        }
+      },
+      {
+        "name": "Doors",
+        "overall_width_mm": {
+          "value": 1067.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "3.5 feet"
+        },
+        "overall_height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "unclear",
+          "raw_text": "?feet (first digit unclear, possibly 5 or 6)"
+        }
+      }
+    ],
+    "overall_width_mm": {
+      "value": null,
+      "unit": "mm",
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "overall_height_mm": {
+      "value": null,
+      "unit": "mm",
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": "Windows",
+        "width_mm": {
+          "value": 610.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "2 ft"
+        },
+        "height_mm": {
+          "value": 1219.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "4 feet"
+        },
+        "qty": {
+          "value": 2.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "(2) Windows"
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: Windows. Unlabelled, named P1 (left pane of window). Width 2 ft written under this pane. Height 4 feet is the single dimension beside the row of panes, applied to both. Quantity 2 from the circled number next to 'Windows'. converted to mm from width '2 ft', height '4 feet'",
+        "confidence": "high",
+        "confidence_reason": "Width, height and quantity are all clearly written; thickness, glass type and edge work are not shown but are not secondary readings that are unclear."
+      },
+      {
+        "panel_id": "P2",
+        "item": "Windows",
+        "width_mm": {
+          "value": 610.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "2 ft"
+        },
+        "height_mm": {
+          "value": 1219.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "4 feet"
+        },
+        "qty": {
+          "value": 2.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "(2) Windows"
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: Windows. Unlabelled, named P2 (right pane of window). Width 2 ft written under this pane. Height 4 feet is the single dimension beside the row of panes, applied to both. Quantity 2 from the circled number next to 'Windows'. converted to mm from width '2 ft', height '4 feet'",
+        "confidence": "high",
+        "confidence_reason": "Width, height and quantity are all clearly written; thickness, glass type and edge work are not shown."
+      },
+      {
+        "panel_id": "P3",
+        "item": "Doors",
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": 1.0,
+          "unit": null,
+          "status": "clear",
+          "raw_text": "(1) Doors"
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: Doors. Unlabelled, named P3: the upper glass pane of the door, marked 'glass'. Only the overall door size is written, not the glass size, so width and height are not shown. Quantity 1 from the circled number next to 'Doors'",
+        "confidence": "low",
+        "confidence_reason": "The glass pane's own width and height are not written; only the door's overall size is given."
+      }
+    ],
+    "general_notes": [
+      "Lower part of the door is marked 'Alumin' (aluminium): not glass, excluded from panels.",
+      "Windows: overall 4 feet wide by 4 feet high, with bottom dimensions 2 ft, 4 feet, 2 ft.",
+      "Door: overall 3.5 feet wide; height written at right is unclear.",
+      "Crossed-out words above each sketch are not labels."
+    ],
+    "unreadable_items": []
+  }
+}

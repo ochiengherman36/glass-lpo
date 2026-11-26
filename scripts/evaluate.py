@@ -174,8 +174,12 @@ def truth_items(truth: dict) -> list[tuple[str, dict]]:
 
 def truth_panels(truth: dict) -> list[dict]:
     if "items" in truth:
-        return [panel for item in truth["items"] for panel in item["panels"]]
+        return [{**panel, "item": item.get("item")} for item in truth["items"] for panel in item["panels"]]
     return truth["panels"]
+
+
+def item_key(name: str | None) -> str:
+    return (name or "").strip().lower().removesuffix("s")
 
 
 def extracted_items(extraction: dict) -> list[tuple[str | None, dict | None, dict | None]]:
@@ -208,6 +212,15 @@ def match_panels(expected: list[dict], extracted: list[dict]) -> tuple[list[int 
     by_id = [ids.index(panel["panel_id"].upper()) if panel["panel_id"].upper() in ids else None for panel in expected]
     if any(index is not None for index in by_id):
         return by_id, "panel ID"
+
+    got_items = {item_key(panel.get("item")) for panel in extracted} - {""}
+    if got_items and {item_key(panel.get("item")) for panel in expected} & got_items:
+        matches: list[int | None] = []
+        for panel in expected:
+            same_item = [i for i, got in enumerate(extracted) if item_key(got.get("item")) == item_key(panel.get("item"))]
+            position = sum(1 for earlier in expected[: len(matches)] if item_key(earlier.get("item")) == item_key(panel.get("item")))
+            matches.append(same_item[position] if position < len(same_item) else None)
+        return matches, "item, then order within the item (no matching IDs)"
     return [index if index < len(extracted) else None for index in range(len(expected))], "order (no matching IDs)"
 
 
@@ -315,6 +328,7 @@ def report(folder: Path, scores: list[FieldScore], truth: dict, result: dict, ma
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("folders", nargs="*", type=Path, help="Drawing folders (default: all in test_drawings/)")
+    parser.add_argument("--report", default=REPORT_NAME, help=f"Report file name in test_drawings/ (default {REPORT_NAME})")
     args = parser.parse_args(argv)
     folders = args.folders or sorted(path for path in DEFAULT_DRAWINGS_DIR.iterdir() if path.is_dir())
 
@@ -343,7 +357,7 @@ def main(argv: list[str] | None = None) -> int:
         "",
     ]
     text = "\n".join(header) + "\n" + "\n".join(sections)
-    (DEFAULT_DRAWINGS_DIR / REPORT_NAME).write_text(text, encoding="utf-8")
+    (DEFAULT_DRAWINGS_DIR / args.report).write_text(text, encoding="utf-8")
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     print(text)
     return 0
