@@ -1,0 +1,53 @@
+{
+  "drawing_id": "06-oak-double-door",
+  "source_photo": "images 18.jpg",
+  "description": "Joinery drawing: solid European oak double door with glazed panels, 'scale 1:1'. Ground truth written before running the system.",
+  "items": [
+    {
+      "item": "double door",
+      "overall": {
+        "width_mm": 1187,
+        "height_mm": 2050,
+        "width_as_written": "1187 O/A",
+        "height_as_written": "2050 O/A"
+      },
+      "panels": [
+        {
+          "panel_id": "door-left",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "thickness_mm": 14,
+          "thickness_as_written": "14MM UNIT",
+          "glass_type": "double glazed unit",
+          "edge_work": "bevel",
+          "edge_work_as_written": "Bevel",
+          "holes": [],
+          "notches": [],
+          "notes": "glazed panel marked '14MM UNIT'; glass size is NOT dimensioned - it would be derived from the timber frame"
+        },
+        {
+          "panel_id": "door-right",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "thickness_mm": 14,
+          "thickness_as_written": "14MM UNIT",
+          "glass_type": "double glazed unit",
+          "edge_work": "bevel",
+          "edge_work_as_written": "Bevel",
+          "holes": [],
+          "notches": [],
+          "notes": "same as left"
+        }
+      ]
+    }
+  ],
+  "expected_flags": [
+    "this is a timber door drawing, not a glass cutting list - the only glass data is '14MM UNIT' x2",
+    "no glass width/height is written - system must mark sizes CHECK, never derive them from the frame drawing",
+    "1187 O/A and 2050 O/A are overall door frame sizes, not glass sizes - must not be used as glass dimensions",
+    "14 mm is not a standard thickness - CHECK",
+    "many small annotations (90, 90x70, 170, 700, beads, hinges) are joinery details, not glass data"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "drawing_id": "05-window-and-door-feet",
+  "source_photo": "images 17.jpg",
+  "description": "Window and door sketched in feet, with quantities in circled numbers. Ground truth written before running the system.",
+  "items": [
+    {
+      "item": "windows",
+      "overall": {
+        "width_mm": null,
+        "height_mm": 1219,
+        "width_as_written": "4 feet (top); 2 ft / 4 feet / 2 ft (bottom)",
+        "height_as_written": "4 feet"
+      },
+      "panels": [
+        {
+          "panel_id": "window",
+          "width_mm": null,
+          "height_mm": 1219,
+          "width_as_written": "4 feet (top); 2 ft / 4 feet / 2 ft (bottom)",
+          "height_as_written": "4 feet",
+          "qty": 2,
+          "qty_as_written": "circled 2, 'Windows (2)'",
+          "thickness_mm": null,
+          "glass_type": null,
+          "holes": [],
+          "notches": [],
+          "notes": "top says 4 ft; bottom says 2 ft / 4 ft / 2 ft - conflicting. Qty 2 from circled '2' + 'Windows'"
+        }
+      ]
+    },
+    {
+      "item": "doors",
+      "overall": {
+        "width_mm": 1067,
+        "height_mm": 2134,
+        "width_as_written": "3.5 feet",
+        "height_as_written": "7 feet (digit unclear)"
+      },
+      "panels": [
+        {
+          "panel_id": "door",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "qty_as_written": "circled 1, 'Doors (1)'",
+          "thickness_mm": null,
+          "glass_type": null,
+          "holes": [],
+          "notches": [],
+          "notes": "upper section marked 'glass', lower section marked 'Alumin...' (aluminium). Only the upper half is glass, size not written; 3.5 ft x 7 ft is the whole door"
+        }
+      ]
+    }
+  ],
+  "expected_flags": [
+    "all dimensions in feet - system must convert (1 ft = 304.8 mm) and should show the original values",
+    "window width conflicting: top says 4 ft, bottom says 2 ft / 4 ft / 2 ft - CHECK, do not add up",
+    "door height digit unclear ('7 feet') - CHECK",
+    "door glass size not written - only the upper half is glass, lower half is aluminium; system must not use the door size as the glass size",
+    "no thickness or glass type anywhere - CHECK on both items",
+    "word above each item is crossed out - only the circled quantities count"
+  ]
+}

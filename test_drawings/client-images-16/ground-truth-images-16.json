@@ -1,0 +1,74 @@
+{
+  "drawing_id": "04-doors-and-sliding-window",
+  "source_photo": "images 16.jpg",
+  "description": "One sheet, two items: a 2-door unit in metres and a sliding window in centimetres. Ground truth written before running the system.",
+  "items": [
+    {
+      "item": "doors",
+      "overall": {
+        "width_mm": 2950,
+        "height_mm": 2400,
+        "width_as_written": "2.95m",
+        "height_as_written": "2.4m"
+      },
+      "panels": [
+        {
+          "panel_id": "door-1",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "thickness_mm": 12,
+          "thickness_as_written": "12mm",
+          "glass_type": null,
+          "holes": [],
+          "notches": [],
+          "notes": "individual door width not dimensioned; 2 doors share the 2950 overall. 2.4 m is the outer frame height; the doors are drawn shorter inside it"
+        },
+        {
+          "panel_id": "door-2",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "thickness_mm": 12,
+          "thickness_as_written": "12mm",
+          "glass_type": null,
+          "holes": [],
+          "notches": [],
+          "notes": "individual door width not dimensioned. 2.4 m is the outer frame height"
+        }
+      ]
+    },
+    {
+      "item": "sliding window",
+      "overall": {
+        "width_mm": 750,
+        "height_mm": 970,
+        "width_as_written": "75cm",
+        "height_as_written": "97cm"
+      },
+      "panels": [
+        {
+          "panel_id": "window-1",
+          "width_mm": 750,
+          "height_mm": 970,
+          "width_as_written": "75cm",
+          "height_as_written": "97cm",
+          "qty": 1,
+          "thickness_mm": null,
+          "glass_type": null,
+          "holes": [],
+          "notches": [],
+          "notes": "sliding window; thickness not stated"
+        }
+      ]
+    }
+  ],
+  "expected_flags": [
+    "mixed units on one sheet (m and cm) - system must convert both to mm correctly",
+    "individual door widths are not dimensioned - system must not split 2950 by 2 and present it as written",
+    "door heights are not dimensioned - 2.4 m is the outer frame height, system must not use it as the door height",
+    "window thickness and glass type not stated - CHECK",
+    "door glass type not stated (only '12mm, 2 doors') - CHECK",
+    "window qty not written - assumed 1, flag"
+  ]
+}

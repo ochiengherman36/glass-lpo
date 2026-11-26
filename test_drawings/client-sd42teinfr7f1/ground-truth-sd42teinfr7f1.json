@@ -1,0 +1,86 @@
+{
+  "drawing_id": "07-imperial-partition",
+  "source_photo": "sd42teinfr7f1.jpeg",
+  "description": "Three-panel screen in inches with fractions, photographed sideways. Heights written as fractions only: left '?? 1/4', right '?? 3/8'. Ground truth written before running the system.",
+  "items": [
+    {
+      "item": "partition screen",
+      "overall": {
+        "width_mm": 2740,
+        "height_mm": null,
+        "width_as_written": "107 7/8 (inches)",
+        "height_as_written": "left '?? 1/4', right '?? 3/8' (whole number missing)"
+      },
+      "panels": [
+        {
+          "panel_id": "panel-1",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "thickness_mm": null,
+          "glass_type": null,
+          "holes": [],
+          "notches": [],
+          "notes": "3 panels share 107 7/8 in overall; individual widths not dimensioned"
+        },
+        {
+          "panel_id": "panel-2",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "thickness_mm": null,
+          "glass_type": null,
+          "holes": [],
+          "notches": [],
+          "notes": "3 panels share 107 7/8 in overall; individual widths not dimensioned"
+        },
+        {
+          "panel_id": "panel-3",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "thickness_mm": null,
+          "glass_type": null,
+          "holes": [],
+          "notches": [],
+          "notes": "3 panels share 107 7/8 in overall; individual widths not dimensioned"
+        },
+        {
+          "panel_id": "top-rail",
+          "width_mm": null,
+          "height_mm": null,
+          "qty": 1,
+          "thickness_mm": null,
+          "glass_type": null,
+          "holes": [
+            {
+              "diameter_mm": null,
+              "x_mm": null,
+              "y_mm": null
+            },
+            {
+              "diameter_mm": null,
+              "x_mm": null,
+              "y_mm": null
+            },
+            {
+              "diameter_mm": null,
+              "x_mm": null,
+              "y_mm": null
+            }
+          ],
+          "notches": [],
+          "notes": "top strip covers panels 2-3 only; may be a rail or clamps, circles may be clamp or hinge points - confirm. Diameters and positions not written"
+        }
+      ]
+    }
+  ],
+  "expected_flags": [
+    "width in inches with fraction (107 7/8 in = 2740 mm) - system must convert and keep the original",
+    "both heights missing the whole number ('?? 1/4' left, '?? 3/8' right) - CHECK",
+    "individual panel widths not dimensioned - CHECK, do not split 107 7/8 by 3",
+    "hole diameters and positions not written - count only (3), everything else CHECK",
+    "top strip covers panels 2-3 only; may be a rail or clamps, circles may be clamp or hinge points - confirm",
+    "no glass type or quantity stated"
+  ]
+}
