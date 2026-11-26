@@ -1,0 +1,547 @@
+{
+  "lpo_no": "LPO-20261126-235017",
+  "issued_at": "2026-11-26T23:50:17",
+  "source_name": "images 16.jpg",
+  "needs_check": true,
+  "steps_applied": [
+    "perspective: no paper edge found, skipped",
+    "deskew: no consistent straight lines (curved page or too few lines), skipped",
+    "upscaled x2.71",
+    "removed shadows and uneven lighting, whitened the paper and darkened the ink",
+    "denoised and sharpened"
+  ],
+  "columns": [
+    "LPO No",
+    "Line",
+    "Panel ID",
+    "Width (mm)",
+    "Height (mm)",
+    "Qty",
+    "Thickness (mm)",
+    "Glass type",
+    "Area (m²)",
+    "Hole count",
+    "Hole diameters (mm)",
+    "Hole positions",
+    "Notches/offcuts",
+    "Grooves/edge work",
+    "Notes",
+    "Confidence",
+    "Needs check (Y/N)"
+  ],
+  "panels": [
+    {
+      "LPO No": "LPO-20261126-235017",
+      "Line": 1,
+      "Panel ID": "P1",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": "CHECK",
+      "Thickness (mm)": 12,
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: doors. Unlabelled; named P1 (left door) by position. Note '12mm, 2 doors' applied to thickness. 2.95m x 2.4m is the overall size of the doors item, not the individual glass panel size. Quantity per panel is not clearly stated ('2 doors' could mean the two panels drawn or a quantity of 2); width not written on drawing; height not written on drawing; quantity unclear (raw: '2 doors'); glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-235017",
+      "Line": 2,
+      "Panel ID": "P2",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": "CHECK",
+      "Thickness (mm)": 12,
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: doors. Unlabelled; named P2 (right door) by position. Note '12mm, 2 doors' applied to thickness. 2.95m x 2.4m is the overall size of the doors item, not the individual glass panel size. Quantity per panel is not clearly stated; width not written on drawing; height not written on drawing; quantity unclear (raw: '2 doors'); glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-235017",
+      "Line": 3,
+      "Panel ID": "P3",
+      "Width (mm)": 750,
+      "Height (mm)": 970,
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": 0.728,
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Item: sliding window. Unlabelled; named P3 by position. Single pane labelled 'sliding window'. The 12mm note is inside the doors drawing and was not applied to the window. converted to mm from width '75cm', height '97cm'; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    }
+  ],
+  "flags": [
+    {
+      "panel_id": "P1",
+      "field": "width",
+      "message": "P1: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "height",
+      "message": "P1: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "qty",
+      "message": "P1: quantity unclear (raw: '2 doors')",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "glass_type",
+      "message": "P1: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "width",
+      "message": "P2: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "height",
+      "message": "P2: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "qty",
+      "message": "P2: quantity unclear (raw: '2 doors')",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "glass_type",
+      "message": "P2: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "qty",
+      "message": "P3: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "thickness",
+      "message": "P3: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "glass_type",
+      "message": "P3: glass type not written on drawing",
+      "severity": "minor"
+    }
+  ],
+  "totals": {
+    "lines": 3,
+    "pieces": 3,
+    "area_m2": 0.728,
+    "area_complete": false,
+    "holes": 0
+  },
+  "usage": {
+    "model": "claude-sonnet-5-5",
+    "input_tokens": 7556,
+    "output_tokens": 2346,
+    "fallback_used": false
+  },
+  "files": {
+    "original": "images-16-original.jpg",
+    "enhanced": "images-16-enhanced.jpg",
+    "xlsx": "LPO-20261126-235017.xlsx",
+    "pdf": "LPO-20261126-235017.pdf",
+    "json": "result.json"
+  },
+  "extraction": {
+    "drawing_unit": null,
+    "items": [
+      {
+        "name": "doors",
+        "overall_width_mm": {
+          "value": 2.95,
+          "unit": "m",
+          "status": "clear",
+          "raw_text": "2.95m"
+        },
+        "overall_height_mm": {
+          "value": 2.4,
+          "unit": "m",
+          "status": "clear",
+          "raw_text": "2.4m"
+        }
+      },
+      {
+        "name": "sliding window",
+        "overall_width_mm": {
+          "value": 75.0,
+          "unit": "cm",
+          "status": "clear",
+          "raw_text": "75cm"
+        },
+        "overall_height_mm": {
+          "value": 97.0,
+          "unit": "cm",
+          "status": "clear",
+          "raw_text": "97cm"
+        }
+      }
+    ],
+    "overall_width_mm": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "overall_height_mm": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": "doors",
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "unclear",
+          "raw_text": "2 doors"
+        },
+        "thickness_mm": {
+          "value": 12.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "12mm"
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; named P1 (left door) by position. Note '12mm, 2 doors' applied to thickness. 2.95m x 2.4m is the overall size of the doors item, not the individual glass panel size. Quantity per panel is not clearly stated ('2 doors' could mean the two panels drawn or a quantity of 2).",
+        "confidence": "low",
+        "confidence_reason": "Panel width and height are not written, and quantity is ambiguous."
+      },
+      {
+        "panel_id": "P2",
+        "item": "doors",
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "unclear",
+          "raw_text": "2 doors"
+        },
+        "thickness_mm": {
+          "value": 12.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "12mm"
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; named P2 (right door) by position. Note '12mm, 2 doors' applied to thickness. 2.95m x 2.4m is the overall size of the doors item, not the individual glass panel size. Quantity per panel is not clearly stated.",
+        "confidence": "low",
+        "confidence_reason": "Panel width and height are not written, and quantity is ambiguous."
+      },
+      {
+        "panel_id": "P3",
+        "item": "sliding window",
+        "width_mm": {
+          "value": 75.0,
+          "unit": "cm",
+          "status": "clear",
+          "raw_text": "75cm"
+        },
+        "height_mm": {
+          "value": 97.0,
+          "unit": "cm",
+          "status": "clear",
+          "raw_text": "97cm"
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; named P3 by position. Single pane labelled 'sliding window'. The 12mm note is inside the doors drawing and was not applied to the window.",
+        "confidence": "low",
+        "confidence_reason": "Quantity is not written; thickness is also not shown."
+      }
+    ],
+    "general_notes": [
+      "12mm, 2 doors",
+      "sliding window",
+      "The area between the outer rectangle and the inner door frame is not labelled as glass and was not recorded as a panel."
+    ],
+    "unreadable_items": []
+  },
+  "normalized": {
+    "drawing_unit": "mm",
+    "items": [
+      {
+        "name": "doors",
+        "overall_width_mm": {
+          "value": 2950.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "2.95m"
+        },
+        "overall_height_mm": {
+          "value": 2400.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "2.4m"
+        }
+      },
+      {
+        "name": "sliding window",
+        "overall_width_mm": {
+          "value": 750.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "75cm"
+        },
+        "overall_height_mm": {
+          "value": 970.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "97cm"
+        }
+      }
+    ],
+    "overall_width_mm": {
+      "value": null,
+      "unit": "mm",
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "overall_height_mm": {
+      "value": null,
+      "unit": "mm",
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": "doors",
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "unclear",
+          "raw_text": "2 doors"
+        },
+        "thickness_mm": {
+          "value": 12.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "12mm"
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: doors. Unlabelled; named P1 (left door) by position. Note '12mm, 2 doors' applied to thickness. 2.95m x 2.4m is the overall size of the doors item, not the individual glass panel size. Quantity per panel is not clearly stated ('2 doors' could mean the two panels drawn or a quantity of 2)",
+        "confidence": "low",
+        "confidence_reason": "Panel width and height are not written, and quantity is ambiguous."
+      },
+      {
+        "panel_id": "P2",
+        "item": "doors",
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "unclear",
+          "raw_text": "2 doors"
+        },
+        "thickness_mm": {
+          "value": 12.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "12mm"
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: doors. Unlabelled; named P2 (right door) by position. Note '12mm, 2 doors' applied to thickness. 2.95m x 2.4m is the overall size of the doors item, not the individual glass panel size. Quantity per panel is not clearly stated",
+        "confidence": "low",
+        "confidence_reason": "Panel width and height are not written, and quantity is ambiguous."
+      },
+      {
+        "panel_id": "P3",
+        "item": "sliding window",
+        "width_mm": {
+          "value": 750.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "75cm"
+        },
+        "height_mm": {
+          "value": 970.0,
+          "unit": "mm",
+          "status": "clear",
+          "raw_text": "97cm"
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Item: sliding window. Unlabelled; named P3 by position. Single pane labelled 'sliding window'. The 12mm note is inside the doors drawing and was not applied to the window. converted to mm from width '75cm', height '97cm'",
+        "confidence": "low",
+        "confidence_reason": "Quantity is not written; thickness is also not shown."
+      }
+    ],
+    "general_notes": [
+      "12mm, 2 doors",
+      "sliding window",
+      "The area between the outer rectangle and the inner door frame is not labelled as glass and was not recorded as a panel."
+    ],
+    "unreadable_items": []
+  }
+}

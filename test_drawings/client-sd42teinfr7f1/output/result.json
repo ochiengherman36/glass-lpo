@@ -1,0 +1,923 @@
+{
+  "lpo_no": "LPO-20261126-235141",
+  "issued_at": "2026-11-26T23:51:41",
+  "source_name": "sd42teinfr7f1.jpeg",
+  "needs_check": true,
+  "steps_applied": [
+    "resized to 2000 px long side",
+    "perspective: no paper edge found, skipped",
+    "deskew: no consistent straight lines (curved page or too few lines), skipped",
+    "removed shadows and uneven lighting, whitened the paper and darkened the ink",
+    "denoised and sharpened"
+  ],
+  "columns": [
+    "LPO No",
+    "Line",
+    "Panel ID",
+    "Width (mm)",
+    "Height (mm)",
+    "Qty",
+    "Thickness (mm)",
+    "Glass type",
+    "Area (m²)",
+    "Hole count",
+    "Hole diameters (mm)",
+    "Hole positions",
+    "Notches/offcuts",
+    "Grooves/edge work",
+    "Notes",
+    "Confidence",
+    "Needs check (Y/N)"
+  ],
+  "panels": [
+    {
+      "LPO No": "LPO-20261126-235141",
+      "Line": 1,
+      "Panel ID": "P1",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Unlabelled; named left to right, top to bottom. Left full-height column. Only the overall width is written; the only height marks are the fractions '1/4' and '3/8', so no panel size is recorded; width not written on drawing; height not written on drawing; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-235141",
+      "Line": 2,
+      "Panel ID": "P2",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Unlabelled; middle column below the top strip. Sizes not written; width not written on drawing; height not written on drawing; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-235141",
+      "Line": 3,
+      "Panel ID": "P3",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 0,
+      "Hole diameters (mm)": "",
+      "Hole positions": "",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Unlabelled; right column below the top strip. Sizes not written; width not written on drawing; height not written on drawing; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-235141",
+      "Line": 4,
+      "Panel ID": "P4",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 1,
+      "Hole diameters (mm)": "CHECK (?)",
+      "Hole positions": "not dimensioned",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Unlabelled; narrow strip along the top of the middle column, between two vertical lines. The strip's split from the neighbouring strip and the hole assignment are judged from the sketch; width not written on drawing; height not written on drawing; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing; hole 1 diameter not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    },
+    {
+      "LPO No": "LPO-20261126-235141",
+      "Line": 5,
+      "Panel ID": "P5",
+      "Width (mm)": "CHECK",
+      "Height (mm)": "CHECK",
+      "Qty": 1,
+      "Thickness (mm)": "CHECK",
+      "Glass type": "CHECK",
+      "Area (m²)": "CHECK",
+      "Hole count": 2,
+      "Hole diameters (mm)": "CHECK (?, ?)",
+      "Hole positions": "not dimensioned",
+      "Notches/offcuts": "",
+      "Grooves/edge work": "",
+      "Notes": "Unlabelled; narrow strip along the top of the right column. Sizes not written; hole assignment judged from the sketch; width not written on drawing; height not written on drawing; quantity not written, assumed 1; thickness not written on drawing; glass type not written on drawing; hole 1 diameter not written on drawing; hole 2 diameter not written on drawing",
+      "Confidence": "Low",
+      "Needs check (Y/N)": "Y"
+    }
+  ],
+  "flags": [
+    {
+      "panel_id": null,
+      "field": "overall width",
+      "message": "Overall width unclear (raw: '107 7/8 (no unit written); unit not written, inches assumed from the fraction')",
+      "severity": "minor"
+    },
+    {
+      "panel_id": null,
+      "field": "overall height",
+      "message": "Overall height unclear (raw: 'only fractions written beside the height: '1/4' on left side, '3/8' on right side, no whole number or unit')",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "width",
+      "message": "P1: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "height",
+      "message": "P1: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P1",
+      "field": "qty",
+      "message": "P1: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "thickness",
+      "message": "P1: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P1",
+      "field": "glass_type",
+      "message": "P1: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "width",
+      "message": "P2: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "height",
+      "message": "P2: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P2",
+      "field": "qty",
+      "message": "P2: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "thickness",
+      "message": "P2: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P2",
+      "field": "glass_type",
+      "message": "P2: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "width",
+      "message": "P3: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P3",
+      "field": "height",
+      "message": "P3: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P3",
+      "field": "qty",
+      "message": "P3: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "thickness",
+      "message": "P3: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P3",
+      "field": "glass_type",
+      "message": "P3: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P4",
+      "field": "width",
+      "message": "P4: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P4",
+      "field": "height",
+      "message": "P4: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P4",
+      "field": "qty",
+      "message": "P4: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P4",
+      "field": "thickness",
+      "message": "P4: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P4",
+      "field": "glass_type",
+      "message": "P4: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P4",
+      "field": "holes",
+      "message": "P4: hole 1 diameter not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P5",
+      "field": "width",
+      "message": "P5: width not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P5",
+      "field": "height",
+      "message": "P5: height not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P5",
+      "field": "qty",
+      "message": "P5: quantity not written, assumed 1",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P5",
+      "field": "thickness",
+      "message": "P5: thickness not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P5",
+      "field": "glass_type",
+      "message": "P5: glass type not written on drawing",
+      "severity": "minor"
+    },
+    {
+      "panel_id": "P5",
+      "field": "holes",
+      "message": "P5: hole 1 diameter not written on drawing",
+      "severity": "critical"
+    },
+    {
+      "panel_id": "P5",
+      "field": "holes",
+      "message": "P5: hole 2 diameter not written on drawing",
+      "severity": "critical"
+    }
+  ],
+  "totals": {
+    "lines": 5,
+    "pieces": 5,
+    "area_m2": 0,
+    "area_complete": false,
+    "holes": 3
+  },
+  "usage": {
+    "model": "claude-sonnet-5-5",
+    "input_tokens": 10063,
+    "output_tokens": 3329,
+    "fallback_used": false
+  },
+  "files": {
+    "original": "sd42teinfr7f1-original.jpg",
+    "enhanced": "sd42teinfr7f1-enhanced.jpg",
+    "xlsx": "LPO-20261126-235141.xlsx",
+    "pdf": "LPO-20261126-235141.pdf",
+    "json": "result.json"
+  },
+  "extraction": {
+    "drawing_unit": null,
+    "items": [],
+    "overall_width_mm": {
+      "value": 107.875,
+      "unit": null,
+      "status": "clear",
+      "raw_text": "107 7/8 (no unit written)"
+    },
+    "overall_height_mm": {
+      "value": null,
+      "unit": null,
+      "status": "unclear",
+      "raw_text": "only fractions written beside the height: '1/4' on left side, '3/8' on right side, no whole number or unit"
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; named left to right, top to bottom. Left full-height column. Only the overall width is written; the only height marks are the fractions '1/4' and '3/8', so no panel size is recorded.",
+        "confidence": "low",
+        "confidence_reason": "Width, height, quantity not written or only partial fractions."
+      },
+      {
+        "panel_id": "P2",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; middle column below the top strip. Sizes not written.",
+        "confidence": "low",
+        "confidence_reason": "Width, height, quantity not written."
+      },
+      {
+        "panel_id": "P3",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; right column below the top strip. Sizes not written.",
+        "confidence": "low",
+        "confidence_reason": "Width, height, quantity not written."
+      },
+      {
+        "panel_id": "P4",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "x_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "Partial circle at the top-left corner of this strip, against the line between the left and middle columns"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; narrow strip along the top of the middle column, between two vertical lines. The strip's split from the neighbouring strip and the hole assignment are judged from the sketch.",
+        "confidence": "low",
+        "confidence_reason": "Size, quantity and hole diameter and position not written; hole assignment ambiguous."
+      },
+      {
+        "panel_id": "P5",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "x_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "Oval circle at the top-left of this strip, just right of the second vertical line"
+          },
+          {
+            "diameter_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "x_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "unit": null,
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "Partial circle at the top-right, near the right edge"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; narrow strip along the top of the right column. Sizes not written; hole assignment judged from the sketch.",
+        "confidence": "low",
+        "confidence_reason": "Size, quantity and hole diameters and positions not written; hole assignment ambiguous."
+      }
+    ],
+    "general_notes": [],
+    "unreadable_items": []
+  },
+  "normalized": {
+    "drawing_unit": "mm",
+    "items": [],
+    "overall_width_mm": {
+      "value": 2740.0,
+      "unit": "mm",
+      "status": "unclear",
+      "raw_text": "107 7/8 (no unit written); unit not written, inches assumed from the fraction"
+    },
+    "overall_height_mm": {
+      "value": null,
+      "unit": "mm",
+      "status": "unclear",
+      "raw_text": "only fractions written beside the height: '1/4' on left side, '3/8' on right side, no whole number or unit"
+    },
+    "stated_hole_count": {
+      "value": null,
+      "unit": null,
+      "status": "not_shown",
+      "raw_text": null
+    },
+    "panels": [
+      {
+        "panel_id": "P1",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; named left to right, top to bottom. Left full-height column. Only the overall width is written; the only height marks are the fractions '1/4' and '3/8', so no panel size is recorded",
+        "confidence": "low",
+        "confidence_reason": "Width, height, quantity not written or only partial fractions."
+      },
+      {
+        "panel_id": "P2",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; middle column below the top strip. Sizes not written",
+        "confidence": "low",
+        "confidence_reason": "Width, height, quantity not written."
+      },
+      {
+        "panel_id": "P3",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; right column below the top strip. Sizes not written",
+        "confidence": "low",
+        "confidence_reason": "Width, height, quantity not written."
+      },
+      {
+        "panel_id": "P4",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "x_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "Partial circle at the top-left corner of this strip, against the line between the left and middle columns"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; narrow strip along the top of the middle column, between two vertical lines. The strip's split from the neighbouring strip and the hole assignment are judged from the sketch",
+        "confidence": "low",
+        "confidence_reason": "Size, quantity and hole diameter and position not written; hole assignment ambiguous."
+      },
+      {
+        "panel_id": "P5",
+        "item": null,
+        "width_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "height_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "qty": {
+          "value": null,
+          "unit": null,
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "thickness_mm": {
+          "value": null,
+          "unit": "mm",
+          "status": "not_shown",
+          "raw_text": null
+        },
+        "glass_type": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "holes": [
+          {
+            "diameter_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "x_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "Oval circle at the top-left of this strip, just right of the second vertical line"
+          },
+          {
+            "diameter_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "x_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "y_mm": {
+              "value": null,
+              "unit": "mm",
+              "status": "not_shown",
+              "raw_text": null
+            },
+            "position_description": "Partial circle at the top-right, near the right edge"
+          }
+        ],
+        "notches": [],
+        "edge_work": {
+          "text": null,
+          "status": "not_shown"
+        },
+        "notes": "Unlabelled; narrow strip along the top of the right column. Sizes not written; hole assignment judged from the sketch",
+        "confidence": "low",
+        "confidence_reason": "Size, quantity and hole diameters and positions not written; hole assignment ambiguous."
+      }
+    ],
+    "general_notes": [],
+    "unreadable_items": []
+  }
+}

@@ -27,20 +27,26 @@ were all unclear handwriting it marked CHECK instead of guessing (commit `f1b190
 ### Client drawings (real, mixed units)
 
 Four real handwritten drawings from the client, in metres, centimetres, feet, millimetres and inches with
-fractions. Ground truth was committed before the system ran (commit `2107cd1`); each drawing was run once and these
-are the first-run results. Full report: [`test_drawings/EVALUATION-client-drawings.md`](test_drawings/EVALUATION-client-drawings.md).
+fractions. The ground truth was committed before the system first ran (commit `2107cd1`) and has not changed since.
+Full report: [`test_drawings/EVALUATION-client-drawings.md`](test_drawings/EVALUATION-client-drawings.md).
 
 | Drawing | Units | Fields right | Wrong and not flagged | Notes |
 |---|---|---|---|---|
-| `images 16`: 2 doors + sliding window | m, cm | 31/31 | 0 | Door sizes left as CHECK, not split from the frame size |
+| `images 16`: 2 doors + sliding window | m, cm | 29/31 | 0 | Door sizes left as CHECK, not split from the frame size; door qty from "2 doors" flagged |
 | `images 17`: 2 windows + door | feet | 19/23 | 2 | Read the window as 2 × 2 ft panes in a 4 ft window; ground truth treats those sizes as conflicting |
-| `images 18`: oak double door | mm | 15/20 | 4 | Copied "14mm unit" verbatim (ground truth: "double glazed unit"); did not record or flag "Bevel" |
-| `sd42teinfr7f1`: 3-panel screen | inches, fractions | 8/14 | 3 | Read 3 panels and a top strip as one panel; its width and height were flagged |
-| **Total** | | **73/88 (83%)** | **9** | |
+| `images 18`: oak double door | mm | 18/20 | 2 | Copied "14mm Unit" verbatim; ground truth says "double glazed unit" (same meaning, different words) |
+| `sd42teinfr7f1`: 3-panel screen + top strip | inches, fractions | 36/39 | 0 | Both heights (fractions only) and the assumed inch unit flagged; 2 of 3 holes placed on other panels, flagged |
+| **Total** | | **102/113 (90%)** | **4** | |
 
 Every unit was converted correctly, no glass size was derived from a door or frame size, aluminium and timber
-parts were left out, and every missing or partial dimension was flagged. The evaluator's panel matching was fixed
-after this run (it compared a door with a window pane); before that fix the score read 70/88 with 12 unflagged.
+parts were left out, and every missing or partial dimension was flagged. The four remaining unflagged items are a
+reading choice (images 17) and a wording difference (images 18), not wrong numbers.
+
+**These are second-run results.** The first run (commit `f4bf65e`) scored 73/88 (83%) with 9 wrong and not flagged.
+It showed two real weaknesses, which I then fixed: the enhancement left grey halos on very small photos, and
+Claude merged the three inch panels into one and dropped the "Bevel" note. The fixes are general (upscale small
+photos before lighting correction; prompt rules that lines across glass make separate panels and that notes on the
+glass are recorded), but they were made after seeing these drawings, so this score is partly tuned to them.
 
 ## Setup
 
@@ -156,8 +162,10 @@ docs/         architecture diagram and screenshots
 
 - Tested on seven drawings only (three of my own, four from the client); the scores show the approach, not
   production accuracy.
-- Panel structure is the weakest point: on the inch drawing Claude merged three panels and a top strip into one,
-  and it does not flag such judgement calls (or a label it decides is not about the glass, such as "Bevel").
+- Interpretation is the weakest point: Claude can read a set of dimensions one consistent way (2 + 2 ft panes in a
+  4 ft window) without flagging that another reading exists, and it may place holes on the wrong panel where
+  panels meet. Prompt rules for panel regions and glass notes were added after the first client run.
+- Very small photos (under ~500 px) are upscaled up to 3×; enhancement cannot recover detail the photo does not have.
 - A value with no unit is assumed to be inches when it is a fraction, or the sheet's only other unit, and is always
   flagged; a sheet that mixes units and leaves one off is flagged, not guessed.
 - Hole positions are only filled when the drawing dimensions them; positions are measured from the panel's
