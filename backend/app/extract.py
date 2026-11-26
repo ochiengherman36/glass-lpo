@@ -79,6 +79,12 @@ if the door or frame around it is dimensioned. Joinery details (frame sections, 
 scale notes) go in general_notes, not in panels.
 13. A number written next to an item's name, often circled (for example '(2) Windows'), is the \
 quantity of that item: apply it to the item's panels. A crossed-out word is not a label.
+14. Lines drawn across a glass area (mullions, transoms, a strip along the top) divide it into \
+separate pieces of glass: record one panel per region, even when the regions' own sizes are not \
+written (then they are not_shown). Never merge regions into one panel because their sizes are missing.
+15. A word written on or pointing at a glass area (for example 'bevel', 'polished', 'toughened', \
+'frosted') describes that glass: record it as edge work or glass type. If you are not sure it is \
+about the glass, still record it with status unclear rather than leaving it out.
 """
 
 USER_INSTRUCTIONS = """\

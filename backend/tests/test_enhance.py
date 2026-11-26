@@ -47,6 +47,26 @@ def test_a_large_rectangle_drawn_on_the_page_is_not_mistaken_for_the_paper_edge(
     assert "perspective: no paper edge found, skipped" in result.steps_applied
 
 
+def shadowed_page_with_faint_label() -> np.ndarray:
+    gradient = np.linspace(240, 150, 2000, dtype=np.float32)
+    page = np.tile(gradient, (1400, 1)).astype(np.uint8)
+    page = cv2.cvtColor(page, cv2.COLOR_GRAY2BGR)
+    cv2.putText(page, "2400", (150, 400), cv2.FONT_HERSHEY_SIMPLEX, 3, (40, 40, 40), 6)
+    faint = page[900, 1600].astype(int) - 45
+    cv2.putText(page, "4 ft", (1500, 900), cv2.FONT_HERSHEY_SIMPLEX, 2, tuple(int(v) for v in faint), 3)
+    return page
+
+
+def test_faint_writing_in_a_shadow_survives_and_the_paper_turns_white(tmp_path):
+    result = enhance_image(encode_jpeg(shadowed_page_with_faint_label()), tmp_path)
+    enhanced = cv2.imread(str(result.enhanced_path), cv2.IMREAD_GRAYSCALE)
+
+    faint_label = enhanced[830:920, 1490:1720]
+    assert (faint_label < 160).sum() > 300
+    assert np.median(enhanced) > 240
+    assert np.median(enhanced[:, 1700:]) > 240
+
+
 def test_falls_back_to_deskew_when_there_is_no_paper_edge(skewed_page_bytes, tmp_path):
     result = enhance_image(skewed_page_bytes, tmp_path)
 

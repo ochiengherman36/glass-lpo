@@ -224,9 +224,9 @@ def match_panels(expected: list[dict], extracted: list[dict]) -> tuple[list[int 
     return [index if index < len(extracted) else None for index in range(len(expected))], "order (no matching IDs)"
 
 
-def evaluate_folder(folder: Path) -> tuple[list[FieldScore], dict, dict, str] | None:
+def evaluate_folder(folder: Path, output: str = RESULT_PATH.parent.name) -> tuple[list[FieldScore], dict, dict, str] | None:
     truth_files = sorted(folder.glob("ground-truth-*.json"))
-    result_file = folder / RESULT_PATH
+    result_file = folder / output / RESULT_PATH.name
     if not truth_files or not result_file.is_file():
         return None
 
@@ -329,14 +329,16 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("folders", nargs="*", type=Path, help="Drawing folders (default: all in test_drawings/)")
     parser.add_argument("--report", default=REPORT_NAME, help=f"Report file name in test_drawings/ (default {REPORT_NAME})")
+    parser.add_argument("--output", default=RESULT_PATH.parent.name,
+                        help=f"Output folder name inside each drawing folder (default {RESULT_PATH.parent.name})")
     args = parser.parse_args(argv)
     folders = args.folders or sorted(path for path in DEFAULT_DRAWINGS_DIR.iterdir() if path.is_dir())
 
     sections, all_scores = [], []
     for folder in folders:
-        evaluated = evaluate_folder(folder)
+        evaluated = evaluate_folder(folder, args.output)
         if evaluated is None:
-            print(f"Skipping {folder}: needs ground-truth-*.json and {RESULT_PATH}", file=sys.stderr)
+            print(f"Skipping {folder}: needs ground-truth-*.json and {args.output}/{RESULT_PATH.name}", file=sys.stderr)
             continue
         scores, truth, result, matched_by = evaluated
         all_scores += scores

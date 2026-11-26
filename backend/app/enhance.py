@@ -31,7 +31,7 @@ class OutputNames:
 class EnhanceSettings:
     work_long_side: int = 2000
     claude_long_side: int = 1568
-    max_upscale: float = 2.0
+    max_upscale: float = 3.0
     jpeg_quality: int = 95
 
     edge_blur_kernel: int = 5
@@ -58,16 +58,19 @@ class EnhanceSettings:
     skew_agreement_degrees: float = 1.0
     min_agreeing_fraction: float = 0.8
 
-    background_dilate_kernel: int = 7
-    background_median_kernel: int = 21
-    clahe_clip_limit: float = 2.0
-    clahe_tile_grid: int = 8
+    background_dilate_fraction: float = 0.008
+    min_background_dilate_kernel: int = 7
+    background_median_fraction: float = 0.02
+    min_background_median_kernel: int = 15
+    ink_percentile: float = 1.0
+    paper_white_fraction: float = 0.92
+    ink_gamma: float = 1.3
 
-    denoise_strength: float = 10.0
+    denoise_strength: float = 6.0
     denoise_template_window: int = 7
     denoise_search_window: int = 21
-    sharpen_sigma: float = 1.5
-    sharpen_amount: float = 0.5
+    sharpen_sigma: float = 1.2
+    sharpen_amount: float = 0.35
 
     output_names: OutputNames = field(default_factory=OutputNames)
 
@@ -108,9 +111,9 @@ def enhance_image(
     if not perspective_corrected:
         work = deskew(work, steps, settings)
 
-    gray = normalize_lighting(work, steps, settings)
+    gray = upscale_if_small(to_gray(work), steps, settings)
+    gray = normalize_lighting(gray, steps, settings)
     gray = denoise_and_sharpen(gray, steps, settings)
-    gray = upscale_if_small(gray, steps, settings)
 
     names = settings.output_names
     result = EnhanceResult(
@@ -283,15 +286,21 @@ def normalize_lighting(
     image: np.ndarray, steps: list[str], settings: EnhanceSettings = DEFAULT_SETTINGS
 ) -> np.ndarray:
     gray = to_gray(image)
-    dilate_kernel = np.ones((settings.background_dilate_kernel,) * 2, np.uint8)
-    background = cv2.medianBlur(cv2.dilate(gray, dilate_kernel), settings.background_median_kernel)
-    normalized = cv2.divide(gray, background, scale=255)
-    clahe = cv2.createCLAHE(
-        clipLimit=settings.clahe_clip_limit,
-        tileGridSize=(settings.clahe_tile_grid, settings.clahe_tile_grid),
-    )
-    steps.append("removed shadows and uneven lighting, boosted contrast (CLAHE)")
-    return clahe.apply(normalized)
+    long_side = max(gray.shape[:2])
+    dilate_size = odd_kernel(long_side * settings.background_dilate_fraction, settings.min_background_dilate_kernel)
+    median_size = odd_kernel(long_side * settings.background_median_fraction, settings.min_background_median_kernel)
+    background = cv2.medianBlur(cv2.dilate(gray, np.ones((dilate_size, dilate_size), np.uint8)), median_size)
+    normalized = cv2.divide(gray, background, scale=255).astype(np.float32)
+
+    ink = float(np.percentile(normalized, settings.ink_percentile))
+    paper = float(np.median(normalized)) * settings.paper_white_fraction
+    stretched = np.clip((normalized - ink) / max(1.0, paper - ink), 0.0, 1.0)
+    steps.append("removed shadows and uneven lighting, whitened the paper and darkened the ink")
+    return (stretched**settings.ink_gamma * 255).astype(np.uint8)
+
+
+def odd_kernel(size: float, minimum: int) -> int:
+    return max(minimum, int(size)) | 1
 
 
 def denoise_and_sharpen(
