@@ -17,8 +17,21 @@ def test_end_to_end_run_writes_every_output(skewed_page_bytes, tmp_path):
     result = pipeline.run(skewed_page_bytes, tmp_path, source_name="photo.jpg", extractor=extractor, now=NOW)
 
     assert result.document.lpo_no == "LPO-20261125-100000"
-    for name in ("original.jpg", "enhanced.jpg", "LPO-20261125-100000.xlsx", "LPO-20261125-100000.pdf", "result.json"):
+    for name in ("photo-original.jpg", "photo-enhanced.jpg", "LPO-20261125-100000.xlsx", "LPO-20261125-100000.pdf",
+                 "result.json"):
         assert (tmp_path / name).is_file(), name
+
+
+@pytest.mark.parametrize(
+    ("source_name", "enhanced_name"),
+    [("images 16.jpg", "images-16-enhanced.jpg"), ("sd42teinfr7f1.jpeg", "sd42teinfr7f1-enhanced.jpg"),
+     ("../../x?.png", "x-enhanced.jpg"), (None, "upload-enhanced.jpg")],
+)
+def test_image_outputs_are_named_after_the_uploaded_photo(skewed_page_bytes, tmp_path, source_name, enhanced_name):
+    result = pipeline.run(skewed_page_bytes, tmp_path, source_name=source_name, extractor=FakeExtractor(), now=NOW)
+
+    assert result.enhancement.enhanced_path == tmp_path / enhanced_name
+    assert result.to_dict()["files"]["enhanced"] == enhanced_name
 
 
 def test_extractor_receives_the_resized_claude_copies(skewed_page_bytes, tmp_path):

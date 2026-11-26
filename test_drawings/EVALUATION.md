@@ -16,7 +16,7 @@ A false CHECK is a value the system read correctly but still asked a person to c
 - Holes: 4/4 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
 - Other fields: 10/10 right (100%), 2 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
 
-Model `claude-sonnet-5-5`, 7524 input / 1657 output tokens. LPO `LPO-20261125-155711`.
+Model `claude-sonnet-5-5`, 7524 input / 1657 output tokens. LPO `LPO-20261125-155711`. Panels matched by panel ID.
 
 | Panel | Field | Expected | Got | Flagged | Outcome |
 |---|---|---|---|---|---|
@@ -44,7 +44,7 @@ System flags:
 - Holes: 10/10 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
 - Other fields: 25/25 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
 
-Model `claude-sonnet-5-5`, 7547 input / 4335 output tokens. LPO `LPO-20261125-155703`.
+Model `claude-sonnet-5-5`, 7547 input / 4335 output tokens. LPO `LPO-20261125-155703`. Panels matched by panel ID.
 
 | Panel | Field | Expected | Got | Flagged | Outcome |
 |---|---|---|---|---|---|
@@ -64,7 +64,7 @@ System flags:
 - Holes: 3/3 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
 - Other fields: 5/5 right (100%), 0 false CHECK, 0 flagged and wrong/missing, 0 wrong and not flagged
 
-Model `claude-sonnet-5-5`, 7396 input / 1385 output tokens. LPO `LPO-20261125-155654`.
+Model `claude-sonnet-5-5`, 7396 input / 1385 output tokens. LPO `LPO-20261125-155654`. Panels matched by panel ID.
 
 | Panel | Field | Expected | Got | Flagged | Outcome |
 |---|---|---|---|---|---|

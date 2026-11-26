@@ -24,6 +24,24 @@ Three drawings drawn on paper and photographed with a phone. The answer for each
 On an earlier, messier set of photos the system scored 76/79 with **0 wrong values unflagged**: the 3 misses
 were all unclear handwriting it marked CHECK instead of guessing (commit `f1b190f`).
 
+### Client drawings (real, mixed units)
+
+Four real handwritten drawings from the client, in metres, centimetres, feet, millimetres and inches with
+fractions. Ground truth was committed before the system ran (commit `2107cd1`); each drawing was run once and these
+are the first-run results. Full report: [`test_drawings/EVALUATION-client-drawings.md`](test_drawings/EVALUATION-client-drawings.md).
+
+| Drawing | Units | Fields right | Wrong and not flagged | Notes |
+|---|---|---|---|---|
+| `images 16`: 2 doors + sliding window | m, cm | 31/31 | 0 | Door sizes left as CHECK, not split from the frame size |
+| `images 17`: 2 windows + door | feet | 19/23 | 2 | Read the window as 2 × 2 ft panes in a 4 ft window; ground truth treats those sizes as conflicting |
+| `images 18`: oak double door | mm | 15/20 | 4 | Copied "14mm unit" verbatim (ground truth: "double glazed unit"); did not record or flag "Bevel" |
+| `sd42teinfr7f1`: 3-panel screen | inches, fractions | 8/14 | 3 | Read 3 panels and a top strip as one panel; its width and height were flagged |
+| **Total** | | **73/88 (83%)** | **9** | |
+
+Every unit was converted correctly, no glass size was derived from a door or frame size, aluminium and timber
+parts were left out, and every missing or partial dimension was flagged. The evaluator's panel matching was fixed
+after this run (it compared a door with a window pane); before that fix the score read 70/88 with 12 unflagged.
+
 ## Setup
 
 Requires [uv](https://docs.astral.sh/uv/) (installs Python 3.12 for you) and an
@@ -61,8 +79,8 @@ Settings in `backend/.env`:
 uv run python -m app.cli ../test_drawings/hard/hard.jpeg --out ../test_drawings/hard/output
 ```
 
-Prints each panel, the totals and every flag, and writes `original.jpg`, `enhanced.jpg`, `LPO-….xlsx`,
-`LPO-….pdf` and `result.json`.
+Prints each panel, the totals and every flag, and writes `<photo>-original.jpg`, `<photo>-enhanced.jpg`
+(e.g. `hard-enhanced.jpg`), `LPO-….xlsx`, `LPO-….pdf` and `result.json`.
 
 **Replay without API cost:** rebuilds the Excel and PDF from a saved reading, for example after changing a rule:
 
@@ -80,7 +98,7 @@ port 8000). Run `npm run build` to update `backend/static`.
 
 ```bash
 # in backend/
-uv run pytest                     # 114 tests; Claude is mocked, so no key and no cost
+uv run pytest                     # 153 tests; Claude is mocked, so no key and no cost
 RUN_LIVE=1 uv run pytest -m live  # optional: one real Claude call (PowerShell: $env:RUN_LIVE="1"; uv run pytest -m live)
 
 # in frontend/
@@ -88,6 +106,7 @@ npm test                          # 4 UI tests
 
 # in the repo root
 python scripts/evaluate.py        # score test_drawings/*/output against ground truth
+python scripts/evaluate.py test_drawings/client-* --report EVALUATION-client-drawings.md   # client drawings only
 ```
 
 The evaluator counts each field as correct, flagged but right (a false CHECK), flagged and wrong, or
@@ -106,12 +125,17 @@ The evaluator counts each field as correct, flagged but right (a false CHECK), f
    visible (otherwise deskews, but only when the tilt is clear), removes shadows, boosts contrast, denoises,
    sharpens and upscales. Every step taken is listed in the output.
 2. **Extract** (`app/extract.py`, `app/schema.py`): sends the cleaned and original photo to Claude with a strict
-   schema. Each number comes back as `clear`, `unclear` or `not_shown` with the raw text seen, and the prompt
-   forbids inferring numbers that are not written.
-3. **Validate** (`app/validate.py`): fixed rules mark CHECK for unclear or missing sizes; sizes outside 50–3,300 mm;
-   non-standard thicknesses; panel widths that don't add up to the overall width (±5 mm); holes or notches that
-   don't fit the panel; a stated hole count that doesn't match the holes drawn. Each panel gets a confidence level.
-4. **Outputs** (`app/excel.py`, `app/pdf_lpo.py`): Excel with the 17 requested columns (CHECK cells in yellow) and a
+   schema. Each number comes back as `clear`, `unclear` or `not_shown` with the raw text seen and the unit written
+   next to it, and the prompt forbids inferring numbers that are not written. A sheet with several items (e.g. doors
+   and a window) lists each item with its own overall size.
+3. **Convert units** (`app/units.py`): Python, not Claude, converts m, cm, ft, inches, fractions and feet-and-inches
+   to whole millimetres, keeps the original text in the notes, and checks the number against the text Claude copied.
+   A missing unit, an assumed unit or a mismatch is marked CHECK.
+4. **Validate** (`app/validate.py`): fixed rules mark CHECK for unclear or missing sizes; sizes outside 50–3,300 mm;
+   non-standard thicknesses; panel widths that don't add up to the overall width of their item (±5 mm); holes or
+   notches that don't fit the panel; a stated hole count that doesn't match the holes drawn. Each panel gets a
+   confidence level.
+5. **Outputs** (`app/excel.py`, `app/pdf_lpo.py`): Excel with the 17 requested columns (CHECK cells in yellow) and a
    one-page PDF LPO with an LPO number, date, line items, total m², total holes and the "Needs human check" box.
    No prices.
 
@@ -119,7 +143,7 @@ The evaluator counts each field as correct, flagged but right (a false CHECK), f
 
 ```
 backend/
-  app/        enhance, extract, schema, validate, lpo, excel, pdf_lpo, pipeline, main (FastAPI), cli, config
+  app/        enhance, extract, schema, units, validate, lpo, excel, pdf_lpo, pipeline, main (FastAPI), cli, config
   tests/      unit and API tests with a fake Claude client
   static/     built React page served by FastAPI
 frontend/     Vite + React + TypeScript + Tailwind (upload, CHECK table, flags, downloads)
@@ -130,7 +154,12 @@ docs/         architecture diagram and screenshots
 
 ## Known limitations
 
-- Tested on three drawings only; the scores show the approach works, not production accuracy.
+- Tested on seven drawings only (three of my own, four from the client); the scores show the approach, not
+  production accuracy.
+- Panel structure is the weakest point: on the inch drawing Claude merged three panels and a top strip into one,
+  and it does not flag such judgement calls (or a label it decides is not about the glass, such as "Bevel").
+- A value with no unit is assumed to be inches when it is a fraction, or the sheet's only other unit, and is always
+  flagged; a sheet that mixes units and leaves one off is flagged, not guessed.
 - Hole positions are only filled when the drawing dimensions them; positions are measured from the panel's
   bottom-left corner, which still needs confirming with the client.
 - The width and height sum checks assume one row or one column of panels; grid layouts may be over-flagged.

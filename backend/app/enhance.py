@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 import io
-from dataclasses import dataclass, field
+import re
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 import cv2
@@ -18,6 +19,12 @@ class OutputNames:
     enhanced: str = "enhanced.jpg"
     claude_enhanced: str = "claude_enhanced.jpg"
     claude_original: str = "claude_original.jpg"
+
+    def for_source(self, source_name: str | None) -> OutputNames:
+        stem = re.sub(r"[^A-Za-z0-9._-]+", "-", Path(source_name or "").stem).strip("-.")
+        if not stem:
+            return self
+        return replace(self, original=f"{stem}-{self.original}", enhanced=f"{stem}-{self.enhanced}")
 
 
 @dataclass(frozen=True)

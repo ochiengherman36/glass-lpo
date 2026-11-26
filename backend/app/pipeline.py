@@ -3,12 +3,12 @@ from __future__ import annotations
 import json
 import logging
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from app.enhance import EnhanceResult, enhance_image
+from app.enhance import DEFAULT_SETTINGS, EnhanceResult, enhance_image
 from app.excel import write_excel
 from app.extract import ExtractionResult, extract_drawing
 from app.lpo import COLUMNS, LpoDocument, generate_lpo_number, rows
@@ -107,7 +107,8 @@ def run(
     issued_at = now or datetime.now()
     source_name = source_name or (Path(image).name if isinstance(image, (str, Path)) else "upload")
 
-    enhancement = enhance_image(image, out_dir)
+    settings = replace(DEFAULT_SETTINGS, output_names=DEFAULT_SETTINGS.output_names.for_source(source_name))
+    enhancement = enhance_image(image, out_dir, settings)
     extraction = extractor(enhancement.claude_enhanced_path, enhancement.claude_original_path)
 
     normalized = normalize_units(extraction.drawing)

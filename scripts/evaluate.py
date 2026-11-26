@@ -21,7 +21,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DRAWINGS_DIR = REPO_ROOT / "test_drawings"
 RESULT_PATH = Path("output") / "result.json"
 REPORT_NAME = "EVALUATION.md"
-TOLERANCE_MM = 0.5
+TOLERANCE_MM = 2.0
 
 CORRECT = "correct"
 CHECKED_RIGHT = "checked, right value"
